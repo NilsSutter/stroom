@@ -43,7 +43,14 @@ Booking.create!(user_id: uid_b, station_id: sid_c, confirmed: false, start: "201
 Booking.create!(user_id: uid_c, station_id: sid_c, confirmed: true, start: "2019-03-21 21:22:00", end: "2019-03-22 08:01:00")
 
 # Create a review for each booking
+content_array = [
+  "Good tasting electricity! Would eat again.",
+  "Owner seemed to forget I had booked the spot, but that didn't stop me...",
+  "I had the time of my life! 10/10 would charge again!",
+  "Turns out you can't charge a gasoline engine with a tesla charger in the tail pipe. My bad."
+]
+
 puts "Creating Reviews..."
 Booking.all.each do |each|
-  Review.create!(accessability: rand(0..5), condition: rand(0..5), overall: rand(0..5), booking_id: each.id)
+  Review.create!(accessability: rand(0..5), condition: rand(0..5), overall: rand(0..5), booking_id: each.id, content: content_array[rand(0..3)])
 end

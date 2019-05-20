@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2019_05_20_155802) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "price"
+    t.float "price"
     t.text "instruction"
     t.string "photo"
     t.index ["user_id"], name: "index_stations_on_user_id"
