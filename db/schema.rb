@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 2019_05_20_121059) do
 
   create_table "stations", force: :cascade do |t|
     t.string "address"
-    t.string "type"
+    t.string "charger"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
