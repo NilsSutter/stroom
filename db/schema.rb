@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2019_05_20_121059) do
   create_table "bookings", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "station_id"
-    t.boolean "confirmed"
+    t.boolean "confirmed", default: false
     t.datetime "start"
     t.datetime "end"
     t.datetime "created_at", null: false
