@@ -17,6 +17,7 @@ gem 'webpacker'
 gem 'devise'
 gem 'validates_overlap'
 gem 'pundit'
+ 
 
 
 group :development do
