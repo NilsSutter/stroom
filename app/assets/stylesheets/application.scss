@@ -10,10 +10,12 @@
 
 // Your CSS partials
 @import "components/index";
-@import "pages/index";
 @import "components/navbar";
 @import "components/banner";
 @import "components/search-form";
 @import "components/body";
 @import "components/navbar-transparent";
 @import "components/login";
+
+// Your Pages
+@import "pages/index";

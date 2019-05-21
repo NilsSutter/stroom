@@ -18,7 +18,7 @@
     <%= render '/partials/navbar' unless @disable_nav %>
     <!-- END navbar -->
     <%= yield %>
-    <p class="notice"><%= notice %></p>
+    <p class="notice" style="margin-bottom: 0px;"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
