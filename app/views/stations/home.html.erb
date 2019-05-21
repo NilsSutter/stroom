@@ -9,8 +9,22 @@
     <%= f.submit "Search", class: "btn btn-primary" %>
   <% end %>
 
+
+<div class="banner">
+  <div class="container">
+    <h1>Charge your car. Everywhere!</h1>
+    <p>fuel up your car and never run out of barrery again.</p>
+  </div>
+  <div class="search-form">
+    <div class="search-form-content">
+      <%= simple_form_for :search, url: stations_path, method: "GET", html: { class: 'form' } do |f| %>
+        <%= f.input :address, input_html: {value: ""} %>
+        <%#= f.input :charger, input_html: {value: ""} %>
+        <%= f.input :charger, collection: ["tesla", "mercedes", "bmw", "volkswagen", "volvo", "ford"] %>
+        <%= f.input :start, as: :datetime%>
+        <%= f.submit "Search", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
 </div>
 
-  <%#= form_tag stations_path, method: :get do %>
-    <%#= text_field_tag :query, params[:query], class: "form-control", placeholder: "location"%>
-  <%# end %>
