@@ -13,22 +13,29 @@
       <li class="nav-item active">
         <%= link_to "Home", root_path, class: "nav-link" %>
       </li>
-      <li class="nav-item">
-        <%= link_to "Sign up", new_user_registration_path, class: "nav-link" %>
-      </li>
-      <li class="nav-item">
-        <%= link_to "Sign in", new_user_session_path, class: "nav-link" %>
-      </li>
+      <% if !user_signed_in? %>
+        <li class="nav-item">
+          <%= link_to "Sign up", new_user_registration_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Sign in", new_user_session_path, class: "nav-link" %>
+        </li>
+      <% end %>
       <li class="nav-item dropdown">
-        <%= current_user.email if user_signed_in? %>
-      </li>
-      <li>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-          <%= link_to "List a charger station", new_station_path, class: "dropdown-item" %>
-          <%= link_to "Log out", destroy_user_session_path, class: "dropdown-item" %>
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="  button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= current_user.email if user_signed_in?%></button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <%= link_to "List a charger station", new_station_path, class: "dropdown-item" %>
+              <%= link_to "Log out", destroy_user_session_path, class: "dropdown-item" %>
+            </div>
         </div>
       </li>
     </ul>
   </div>
 </div>
+
+
+
+
 
