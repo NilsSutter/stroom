@@ -18,16 +18,32 @@
     </div>
   <% end %>
 
+  <div class="d-flex">
+    <div class="w-50 px-3">
   <!-- Simple form for creating a new review -->
-  <%= simple_form_for([@booking, @review]) do |f| %>
-      <%= f.input :accessability %>
-      <%= f.input :condition %>
-      <%= f.input :overall %>
-      <%= f.input :content %>
-      <%= f.button :submit, class: "btn btn-primary" %>
-  <% end %>
+      <h2>Leave a Review</h2>
+      <%= simple_form_for([@booking, @review]) do |f| %>
+        <%= f.input :accessability%>
+        <%= f.input :condition %>
+        <%= f.input :overall %>
+        <%= f.input :content %>
+        <%= f.button :submit, class: "btn btn-primary" %>
+      <% end %>
+    </div>
+    <div class="w-50 px-3">
+      <!-- Simple form for creating a new booking -->
+      <h2>Create a Booking</h2>
+      <%= simple_form_for([@station, @new_booking]) do |f| %>
+        <%#= f.input :accessability %>
+        <p>Charger Type: <%= @station.charger %></p>
+        <p>Address: <%= @station.address %></p>
+        <%= f.input :start, as: :datetime%>
+        <%= f.input :end, as: :datetime%>
+        <%= f.button :submit, class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
 </div>
 <!-- END Review -->
 
 <!-- back to results -->
-
