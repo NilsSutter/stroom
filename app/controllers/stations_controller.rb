@@ -2,7 +2,7 @@ class StationsController < ApplicationController
   before_action :find_station, only: [:show]
   before_action :no_user_auth_needed, only: [:home, :index, :show]
   skip_before_action :authenticate_user!, only: [:home, :index, :show]
-  before_action :no_user_login_needed, only: [:home, :index, :show]
+  #before_action :no_user_login_needed, only: [:home, :index, :show]
 
   def home
   end
@@ -26,7 +26,6 @@ class StationsController < ApplicationController
       @stations = Station.where(sql_query, address: @address)
 
     else
-      raise
       # @start = "#{@search["start(1i)"]}-0#{@search["start(2i)"]}-#{@search["start(3i)"]} #{@search["start(4i)"]}:#{@search["start(5i)"]}:00"
       sql_query = " \ stations.address @@ :address \ AND stations.charger @@ :charger"
       @stations = Station.where(sql_query, address: @address, charger: @charger)
