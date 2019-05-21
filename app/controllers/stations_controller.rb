@@ -1,8 +1,7 @@
 class StationsController < ApplicationController
   before_action :find_station, only: [:show]
   before_action :no_user_auth_needed, only: [:home, :index, :show]
-  skip_before_action :authenticate_user!, only: [:home, :index, :show]
-  #before_action :no_user_login_needed, only: [:home, :index, :show]
+  skip_before_action :authenticate_user!, only: [:home, :index, :show, :delete_photo]
 
   def home
   end
@@ -56,6 +55,14 @@ class StationsController < ApplicationController
     end
   end
 
+  def delete_photo
+    @station = Station.find(params[:id])
+    authorize @station
+    @station.remove_photo!
+    @station.save
+    redirect_to @station
+  end
+
   private
 
   def no_user_auth_needed
@@ -68,6 +75,6 @@ class StationsController < ApplicationController
   end
 
   def params_station
-    params.require(:station).permit(:address, :charger)
+    params.require(:station).permit(:address, :charger, :photo)
   end
 end

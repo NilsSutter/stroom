@@ -3,9 +3,29 @@
 
 <!-- START Review -->
 <div class="container">
-  <%= link_to "back to results", :back, :class => 'btn btn-primary my-3' %>
+
+  <%= link_to "back to results", :back, :class => 'btn  btn-primary my-3' %>
   <!-- back to root -->
-  <%= link_to "new search", root_path, :class => 'btn btn-primary my-3' %>
+  <%= link_to "new search", root_path, :class => 'btn btn-primary my-3'  %>
+
+  <% unless @station.photo != nil %>
+    <p>No image uploaded</p>
+  <% else %>
+    <%= cl_image_tag @station.photo, height: 500, width: 300, crop: :fill %>
+    <%= link_to 'delete photo', delete_photo_path(@station) %>
+  <% end %>
+
+  <h3>Reviews</h3>
+  <!-- Display Reviews -->
+  <% @station.reviews.each do |review| %>
+    <div class="my-5">
+      <p>Accessability: <%= review.accessability %></p>
+      <p>Condition: <%= review.condition %></p>
+      <p>Overall: <%= review.overall %></p>
+      <p><%= review.content %></p>
+    </div>
+  <% end %>
+
 
   <div class="d-flex">
     <div class="w-50 px-3">
@@ -49,6 +69,19 @@
       <% else %>
         <p>There are currently no reviews.</p>
       <% end %>
+
+    <h2>Leave a Review</h2>
+  <%if @booking %>
+    <%= simple_form_for([@booking, @review]) do |f| %>
+        <%= f.input :accessability %>
+        <%= f.input :condition %>
+        <%= f.input :overall %>
+        <%= f.input :content %>
+        <%= f.button :submit, class: "btn btn-primary" %>
+     <% end %>
+  <% else %>
+    <p>There are currently no reviews.</p>
+  <% end %>
 
     </div>
     <div class="w-50 px-3">
