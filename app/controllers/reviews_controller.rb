@@ -2,6 +2,7 @@ class ReviewsController < ApplicationController
   def create
     # create new review instance with with whitelisting approach
     @review = Review.new(review_params)
+    authorize @review
     # find the booking instance that belongs to the station
     @booking = Booking.find(params[:booking_id])
     @station = @booking.station
