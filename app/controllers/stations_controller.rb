@@ -26,6 +26,9 @@ class StationsController < ApplicationController
   end
 
   def show
+   @station = Station.find(params[:id])
+   @review = Review.new
+   @booking = @station.bookings.last
   end
 
   private
