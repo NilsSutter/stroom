@@ -4,6 +4,7 @@ class StationsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home, :index, :show, :delete_photo]
 
   def home
+    @disable_nav = true
   end
 
   def index

@@ -13,7 +13,7 @@
   </head>
   <body>
     <!-- START default navbar -->
-    <%= render '/partials/navbar' %>
+    <%= render '/partials/navbar' unless @disable_nav %>
     <!-- END navbar -->
     <%= yield %>
     <p class="notice"><%= notice %></p>

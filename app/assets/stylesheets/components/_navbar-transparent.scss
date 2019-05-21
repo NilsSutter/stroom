@@ -1,0 +1,22 @@
+.navbar-lewagon-transparent {
+  justify-content: space-between;
+  background: white;
+  background-color: transparent;
+}
+
+.navbar-lewagon .navbar-collapse {
+  flex-grow: 0;
+}
+
+.navbar-lewagon .navbar-brand img {
+  width: 40px;
+}
+
+.login-button-home {
+    position: relative;
+    top: -130px;
+    color: white;
+    right: -1200px;
+    padding: 7px;
+    font-weight: lighter;
+}
