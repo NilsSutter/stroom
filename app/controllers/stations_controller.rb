@@ -1,6 +1,6 @@
 class StationsController < ApplicationController
   before_action :find_station, only: [:show]
-  before_action :no_user_login_needed, only: [:home, :index]
+  before_action :no_user_login_needed, only: [:home, :index, :show]
 
   def home
   end
