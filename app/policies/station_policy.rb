@@ -33,6 +33,10 @@ class StationPolicy < ApplicationPolicy
     true || is_user_admin?
   end
 
+  def delete_photo?
+    true
+  end
+
   private
 
   def is_user_admin?

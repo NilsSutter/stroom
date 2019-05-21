@@ -6,4 +6,6 @@ class Station < ApplicationRecord
   has_many :reviews, through: :bookings
   validates :address, :charger, :user, presence: true
   validates_inclusion_of :charger, in: CHARGER_TYPES
+
+  mount_uploader :photo, PhotoUploader
 end
