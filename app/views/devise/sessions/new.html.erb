@@ -1,0 +1,40 @@
+
+<div class="container">
+  <div class="login-wrapper">
+    <div class="outside-box"> <!-- flex? -->
+      <img src="https://images.unsplash.com/photo-1521005449585-1f86ff5d1cae?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80" alt="" class="charging-image-login">
+      <div class="login-content">
+        <h2 style="text-align: center; font-family: 'Josefin Sans', sans-serif; font-weight: bold;" class="pb-3">Log in!</h2>
+
+        <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="form-inputs">
+            <%= f.input :email,
+                        required: false,
+                        autofocus: true,
+                        placeholder: "enter your email",
+                        wrapper_html: { class: 'login-input-text' },
+                        input_html: { autocomplete: "email" } %>
+            <%= f.input :password,
+                        required: false,
+                        placeholder: "enter your password",
+                        wrapper_html: { class: 'login-input-text' },
+                        input_html: { autocomplete: "current-password" } %>
+            <%= f.input :remember_me, as: :boolean, wrapper_html: { class: 'remember-input-text' } if devise_mapping.rememberable? %>
+          </div>
+
+          <div class="form-actions">
+            <%= f.button :submit, "Log in", class: "btn btn-primary w-100 sign-up-button" %>
+          </div>
+        <% end %>
+
+        <%#= render "devise/shared/links" %>
+        <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+        <%= link_to "Sign up", new_registration_path(resource_name), class: "btn btn-light w-100 mx-3 sign-up-style" %><br />
+        <% end %>
+        <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+        <%= link_to "Forgot your password?", new_password_path(resource_name), class: "btn btn-light w-100 sign-up-style" %><br />
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
