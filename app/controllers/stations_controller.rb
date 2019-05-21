@@ -25,7 +25,6 @@ class StationsController < ApplicationController
       @stations = Station.where(sql_query, address: @address)
 
     else
-      raise
       # @start = "#{@search["start(1i)"]}-0#{@search["start(2i)"]}-#{@search["start(3i)"]} #{@search["start(4i)"]}:#{@search["start(5i)"]}:00"
       sql_query = " \ stations.address @@ :address \ AND stations.charger @@ :charger"
       @stations = Station.where(sql_query, address: @address, charger: @charger)

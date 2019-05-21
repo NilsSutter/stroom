@@ -1,9 +1,9 @@
-<h1><%= @station.charger %>-charger at <%= @station.address %></h1>
-
-
+<h1><%= @station.charger %>-charger at
+  <%= @station.address %></h1>
 
 <!-- START Review -->
 <div class="container">
+
   <%= link_to "back to results", :back, :class => 'btn  btn-primary my-3' %>
   <!-- back to root -->
   <%= link_to "new search", root_path, :class => 'btn btn-primary my-3'  %>
@@ -26,9 +26,49 @@
     </div>
   <% end %>
 
+
   <div class="d-flex">
     <div class="w-50 px-3">
-  <!-- Simple form for creating a new review -->
+      <h3>Reviews</h3>
+      <!-- Display Reviews -->
+      <% @station.reviews.each do |review| %>
+        <div class="my-5">
+          <p>Accessability:
+            <%= review.accessability %></p>
+          <p>Condition:
+            <%= review.condition %></p>
+          <p>Overall:
+            <%= review.overall %></p>
+          <p><%= review.content %></p>
+        </div>
+      <% end %>
+    </div>
+    <div class="w-50 px-3">
+      <h3>Upcoming Bookings</h3>
+      <ul>
+        <% @station.bookings.all.each do |item| %>
+        <li><%= item.start %> - <%= item.end %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
+    <div class="d-flex">
+      <div class="w-50 px-3">
+        <!-- Simple form for creating a new review -->
+
+        <h2>Leave a Review</h2>
+        <%if @booking %>
+          <%= simple_form_for([@booking, @review]) do |f| %>
+          <%= f.input :accessability %>
+          <%= f.input :condition %>
+          <%= f.input :overall %>
+          <%= f.input :content %>
+          <%= f.button :submit, class: "btn btn-primary" %>
+        <% end %>
+      <% else %>
+        <p>There are currently no reviews.</p>
+      <% end %>
 
     <h2>Leave a Review</h2>
   <%if @booking %>
@@ -48,9 +88,11 @@
       <!-- Simple form for creating a new booking -->
       <h2>Create a Booking</h2>
       <%= simple_form_for([@station, @new_booking]) do |f| %>
-        <%#= f.input :accessability %>
-        <p>Charger Type: <%= @station.charger %></p>
-        <p>Address: <%= @station.address %></p>
+      <%#= f.input :accessability %>
+        <p>Charger Type:
+          <%= @station.charger %></p>
+        <p>Address:
+          <%= @station.address %></p>
         <%= f.input :start, as: :datetime%>
         <%= f.input :end, as: :datetime%>
         <%= f.button :submit, class: "btn btn-primary" %>
