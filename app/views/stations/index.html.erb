@@ -1,11 +1,24 @@
-<h1>Index!</h1>
+<h1>List of Stations</h1>
 
 <div class="container">
   <div class="row">
     <div class="col-sm-8 col-sm-offset-2">
+      <div class="search-criteria">
+        <p>You have searched for</p>
+        <ul>
+          <li>Charger for <%= @charger %></li>
+          <li>in <%= @address %></li>
+        </ul>
+      </div>
       <div id="stations">
-        <% @stations.each do |station| %>
-          <h4><%= station.address %></h4>
+        <h3>Results</h3>
+        <% if @stations.empty? %>
+          <p>There are currently no stations available in <em><%= @address %></em>  for your <em><%= @charger %> charger</em> </p>
+        <% else %>
+          <% @stations.each do |station| %>
+            <p><%= station.address %></p>
+            <em><p><%= station.charger %></p></em>
+          <% end %>
         <% end %>
       </div>
     </div>

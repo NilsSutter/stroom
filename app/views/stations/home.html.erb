@@ -1,0 +1,15 @@
+<div class="container">
+  <h1>Find a station</h1>
+  <%= simple_form_for :search, url: stations_path, method: "GET", html: { class: 'form-inline' } do |f| %>
+    <%= f.input :address, input_html: {value: ""} %>
+    <%#= f.input :charger, input_html: {value: ""} %>
+    <%= f.input :charger, collection: ["tesla", "mercedes", "bmw", "volkswagen", "volvo", "ford"] %>
+    <%= f.input :start, as: :datetime%>
+    <%= f.submit "Search", class: "btn btn-primary" %>
+  <% end %>
+
+</div>
+
+  <%#= form_tag stations_path, method: :get do %>
+    <%#= text_field_tag :query, params[:query], class: "form-control", placeholder: "location"%>
+  <%# end %>
