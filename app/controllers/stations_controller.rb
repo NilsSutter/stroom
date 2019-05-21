@@ -1,8 +1,8 @@
 class StationsController < ApplicationController
   before_action :find_station, only: [:show]
+  before_action :no_user_login_needed, only: [:home, :index]
 
   def home
-    @stations = policy_scope(Station)
   end
 
   def index
@@ -22,6 +22,10 @@ class StationsController < ApplicationController
   end
 
   private
+
+  def no_user_login_needed
+    @stations = policy_scope(Station)
+  end
 
   def find_station
     @station = Station.find(params[:id])
