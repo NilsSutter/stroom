@@ -1,5 +1,25 @@
 <h1><%= @station.charger %>-Charger at <%= @station.address %></h1>
 
-<% @station.reviews.each do |review| %>
-  <p><%= review.content %></p>
-<% end %>
+<!-- START Review -->
+<div class="container">
+  <h3>Reviews</h3>
+  <!-- Display Reviews -->
+  <% @station.reviews.each do |review| %>
+    <div class="my-5">
+      <p>Accessability: <%= review.accessability %></p>
+      <p>Condition: <%= review.condition %></p>
+      <p>Overall: <%= review.overall %></p>
+      <p><%= review.content %></p>
+    </div>
+  <% end %>
+
+  <!-- Simple form for creating a new review -->
+  <%= simple_form_for([@booking, @review]) do |f| %>
+      <%= f.input :accessability %>
+      <%= f.input :condition %>
+      <%= f.input :overall %>
+      <%= f.input :content %>
+      <%= f.button :submit, class: "btn btn-primary" %>
+  <% end %>
+</div>
+<!-- END Review -->
