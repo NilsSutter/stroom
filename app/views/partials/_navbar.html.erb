@@ -7,12 +7,12 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
         <%= link_to "Home", root_path, class: "nav-link" %>
       </li>
+      <!-- check if user is not signed in and display Sign up/Sign in if thats the case -->
       <% if !user_signed_in? %>
         <li class="nav-item">
           <%= link_to "Sign up", new_user_registration_path, class: "nav-link" %>
@@ -23,12 +23,15 @@
       <% end %>
       <li class="nav-item dropdown">
         <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" type="  button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= current_user.email if user_signed_in?%></button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <%= link_to "List a charger station", new_station_path, class: "dropdown-item" %>
-              <%= link_to "Log out", destroy_user_session_path, class: "dropdown-item" %>
-            </div>
+          <!-- display email address if user is signed in -->
+          <% if user_signed_in? %>
+            <button class="btn btn-secondary dropdown-toggle" type="  button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%= current_user.email %></button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <%= link_to "List a charger station", new_station_path, class: "dropdown-item" %>
+                <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+              </div>
+          <% end %>
         </div>
       </li>
     </ul>
