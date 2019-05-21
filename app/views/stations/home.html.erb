@@ -1,16 +1,10 @@
-<div class="container">
-  <h1>Find a station</h1>
-  <%= simple_form_for :search, url: stations_path, method: "GET", html: { class: 'form-inline' } do |f| %>
-    <%= f.input :address, input_html: {value: ""} %>
-    <%#= f.input :charger, input_html: {value: ""} %>
-    <%= f.input :charger, collection: ["tesla", "mercedes", "bmw", "volkswagen", "volvo", "ford"] %>
-    <%#= f.input :start, as: :datetime %>
-    <%= f.input :start, as: :string, required: false, input_html: {class: "datepicker d-none"}, label: false %>
-    <%= f.submit "Search", class: "btn btn-primary" %>
-  <% end %>
+<%= render '/partials/navbar-transparent'%>
 
 
-<div class="banner">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://2.bp.blogspot.com/-ntdGn8OWtJM/WH2JugK4JOI/AAAAAAAAEl0/4INBsWT4d7w_RJgPhfHCOTQ3MkAJ6FcwgCLcB/s1600/2fb4e31a3fbcc67a6832da712d9435b9.jpg); height: 100vh;">
+  <!-- quick fix; requires to build transparent navbar. files set-up-->
+  <%= link_to "Login", new_user_session_path, class: "login-button-home" %>
+  <!-- quick fix end -->
   <div class="container">
     <h1>Charge your car. Everywhere!</h1>
     <p>fuel up your car and never run out of barrery again.</p>
@@ -18,11 +12,11 @@
   <div class="search-form">
     <div class="search-form-content">
       <%= simple_form_for :search, url: stations_path, method: "GET", html: { class: 'form' } do |f| %>
-        <%= f.input :address, input_html: {value: ""} %>
+        <%= f.input :address, input_html: {value: ""}, wrapper_html: { class: 'search-input-field' } %>
         <%#= f.input :charger, input_html: {value: ""} %>
-        <%= f.input :charger, collection: ["tesla", "mercedes", "bmw", "volkswagen", "volvo", "ford"] %>
-        <%= f.input :start, as: :datetime%>
-        <%= f.submit "Search", class: "btn btn-primary" %>
+        <%= f.input :charger, collection: ["tesla", "mercedes", "bmw", "volkswagen", "volvo", "ford"], wrapper_html: { class: 'search-input-field' } %>
+        <%= f.input :start, as: :string, required: false, input_html: {class: "datepicker d-none"}, label: false %>
+        <%= f.submit "Search", class: "btn btn-primary w-100" %>
       <% end %>
     </div>
   </div>
