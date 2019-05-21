@@ -1,7 +1,7 @@
 class StationsController < ApplicationController
   before_action :find_station, only: [:show]
+  before_action :no_user_auth_needed, only: [:home, :index, :show]
   skip_before_action :authenticate_user!, only: [:home, :index, :show]
-
   before_action :no_user_login_needed, only: [:home, :index, :show]
 
   def home
@@ -38,14 +38,35 @@ class StationsController < ApplicationController
     @booking = @station.bookings.last
   end
 
+  def new
+    @station = Station.new
+    authorize @station
+  end
+
+  def create
+    @station = Station.new(params_station)
+    authorize @station
+    # @user = current_user
+    @station.user = current_user
+    if @station.save
+      redirect_to station_path(@station)
+    else
+      render :new
+    end
+  end
+
   private
 
-  def no_user_login_needed
+  def no_user_auth_needed
     @stations = policy_scope(Station)
   end
 
   def find_station
     @station = Station.find(params[:id])
     authorize @station
+  end
+
+  def params_station
+    params.require(:station).permit(:address, :charger)
   end
 end
