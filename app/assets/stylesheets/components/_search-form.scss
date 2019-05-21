@@ -3,7 +3,7 @@
   border-radius: 5px;
   box-shadow: 0 3px 3px 2px rgba(0, 0, 0, 0.2);
   position: relative;
-  left: 10px;
+  left: 90px;
   bottom: 182px;
   width: 355px;
 }
@@ -15,4 +15,14 @@
 .search-input-field {
   color: gray;
   font-size:13px;
+}
+
+/* Time eases in ;) */
+.flatpickr-time {
+  transition: ease 0.2s;
+}
+
+/* Default height of 28px is not enough */
+.flatpickr-months .flatpickr-month {
+  height: 31px !important;
 }
