@@ -19,6 +19,7 @@ User.create!(email: 'TheHammer@gmail.com', password: 'topsecret', password_confi
 User.create!(email: 'Yourmom@hotmail.com', password: 'topsecret', password_confirmation: 'topsecret')
 User.create!(email: 'Fuzz@theWorks.de', password: 'topsecret', password_confirmation: 'topsecret')
 User.create!(email: 'NachoLover237@mail.dk', password: 'topsecret', password_confirmation: 'topsecret')
+User.create!(email: 'admin@stroom.de', password: 'admin!!', password_confirmation: 'admin!!', admin: true)
 
 # Create 3 Stations
 puts "Creating Stations..."
