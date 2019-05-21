@@ -70,19 +70,6 @@
         <p>There are currently no reviews.</p>
       <% end %>
 
-    <h2>Leave a Review</h2>
-  <%if @booking %>
-    <%= simple_form_for([@booking, @review]) do |f| %>
-        <%= f.input :accessability %>
-        <%= f.input :condition %>
-        <%= f.input :overall %>
-        <%= f.input :content %>
-        <%= f.button :submit, class: "btn btn-primary" %>
-     <% end %>
-  <% else %>
-    <p>There are currently no reviews.</p>
-  <% end %>
-
     </div>
     <div class="w-50 px-3">
       <!-- Simple form for creating a new booking -->
