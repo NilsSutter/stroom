@@ -18,6 +18,11 @@ class StationsController < ApplicationController
       sql_query = " \ stations.charger @@ :charger"
       @stations = Station.where(sql_query, charger: @charger)
 
+    elsif @charger.empty?
+
+      sql_query = " \ stations.address @@ :address"
+      @stations = Station.where(sql_query, address: @address)
+
     else
       # @start = "#{@search["start(1i)"]}-0#{@search["start(2i)"]}-#{@search["start(3i)"]} #{@search["start(4i)"]}:#{@search["start(5i)"]}:00"
       sql_query = " \ stations.address @@ :address \ AND stations.charger @@ :charger"
@@ -26,9 +31,9 @@ class StationsController < ApplicationController
   end
 
   def show
-   @station = Station.find(params[:id])
-   @review = Review.new
-   @booking = @station.bookings.last
+    @station = Station.find(params[:id])
+    @review = Review.new
+    @booking = @station.bookings.last
   end
 
   private
