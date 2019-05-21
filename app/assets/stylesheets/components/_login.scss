@@ -1,0 +1,60 @@
+.form-inputs {
+  width: 230px;
+  height: 240px;
+}
+
+.login-content {
+  height: 500px;
+  display: inline-block;
+  border: 0.5px solid lightgray;
+  padding: 50px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  text-align: left;
+  box-shadow: 1px 1px 10px lightgrey;
+}
+
+.login-wrapper {
+  text-align: center;
+}
+
+.outside-box {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top: 50px;
+}
+
+.charging-image-login {
+  height: 500px;
+  width: 250px;
+  background-size: cover;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+  opacity: 0.7;
+  box-shadow: 1px 1px 10px lightgrey;
+}
+
+.login-input-text {
+  font-family: Josefin Sans;
+  font-size: 15px;
+  color: #3E4245;
+}
+
+.remember-input-text {
+  font-family: Josefin Sans;
+  font-size: 12px;
+  color: grey;
+}
+
+.sign-up-button {
+  font-family: Josefin Sans;
+  // font-size: 13px;
+}
+
+.sign-up-style {
+  margin-left: 0 !important;
+  margin-top: 15px;
+  font-size: 11px;
+
+}
