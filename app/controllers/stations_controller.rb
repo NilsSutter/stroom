@@ -16,15 +16,15 @@ class StationsController < ApplicationController
     else
       @stations = Station.all
     end
+  end
 
-    def show
-    end
+  def show
+  end
 
-    private
+  private
 
-    def find_station
-      @station = Station.find(params[:id])
-      authorize @station
-    end
+  def find_station
+    @station = Station.find(params[:id])
+    authorize @station
   end
 end
