@@ -1,10 +1,10 @@
 class StationsController < ApplicationController
   before_action :find_station, only: [:show]
-   
+
   def home
     @stations = policy_scope(Station)
   end
-  
+
   def index
     if params[:search].present?
       @search = params[:search]
@@ -16,14 +16,15 @@ class StationsController < ApplicationController
     else
       @stations = Station.all
     end
-    
-  def show
-  end
-    
-  private
 
-  def find_station
-    @station = Station.find(params[:id])
-    authorize @station
+    def show
+    end
+
+    private
+
+    def find_station
+      @station = Station.find(params[:id])
+      authorize @station
+    end
   end
 end
