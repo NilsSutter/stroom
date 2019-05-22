@@ -1,6 +1,7 @@
 <div class="container">
   <div class="card">
-    <h2><%= station.address.split(',')[1].split[1] %></h2>
+    <h2 class="top"><%= station.address.split(',')[0] %></h2>
+    <h2><%= station.address.split(',')[1] %></h2>
     <i class="fas fa-arrow-right"></i>
     <p><%= station.charger.upcase %></p>
     <div class="pic" style="background-image: url('<%= station.photo %>')"></div>
