@@ -1,1 +1,23 @@
 // Specific CSS for your home-page
+.landing-page {
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://2.bp.blogspot.com/-ntdGn8OWtJM/WH2JugK4JOI/AAAAAAAAEl0/4INBsWT4d7w_RJgPhfHCOTQ3MkAJ6FcwgCLcB/s1600/2fb4e31a3fbcc67a6832da712d9435b9.jpg);
+
+  background-attachment: fixed;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100vh;
+}
+
+.front-page-text h1, p {
+  font-family: 'Josefin Sans', sans-serif;
+  color: white;
+}
+
+.front-page-text {
+  position: relative;
+  top: 66px;
+  left: 280px;
+  padding: 20px;
+}
