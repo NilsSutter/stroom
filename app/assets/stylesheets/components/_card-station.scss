@@ -95,6 +95,7 @@ h2{
       font-size: 60px;
       font-weight: 700;
       color: #fff;
+      text-shadow: 3px 3px 0px #000000;
     }
 
     .fa-arrow-right {
@@ -106,7 +107,7 @@ h2{
       cursor: pointer;
     }
     p {
-      z-index: 99;
+      z-index: 101;
       position: absolute;
       top: 20px;
       right: 70px;
@@ -120,10 +121,12 @@ h2{
     }
     .pic {
       z-index: 100;
-      width: 400px;
+      width: 664px;
       height: 200px;
+      background-position: center;
       /* background-image: url($img-url); */
-      background-size: 100% 100%;
+      background-size: 100%;
+      -webkit-filter: grayscale(100%);
       filter: grayscale(100%);
     }
 
@@ -171,6 +174,7 @@ h2{
     }
 
     button {
+/*       z-index: 100; */
       position: absolute;
       right: 14px;
       bottom: 14px;
