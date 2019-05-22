@@ -17,6 +17,7 @@ gem 'webpacker'
 gem 'devise'
 gem 'validates_overlap'
 gem 'pundit'
+gem 'geocoder'
 
 
 gem 'cloudinary', '~> 1.9.1'
