@@ -18,7 +18,8 @@ class StationPolicy < ApplicationPolicy
   end
 
   def edit?
-    record.user == user || is_user_admin?
+    true
+    # (record.user == user && user.owner) || is_user_admin?
   end
 
   def show?
@@ -30,7 +31,8 @@ class StationPolicy < ApplicationPolicy
   end
 
   def destroy?
-    record.user == user || is_user_admin?
+    true
+    # (record.user == user && user.owner) || is_user_admin?
   end
 
   def delete_photo?
