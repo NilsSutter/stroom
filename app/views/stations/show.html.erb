@@ -140,6 +140,9 @@
         </div>
       </div>
 
+    <% if policy(Station).edit? %>
+      <%= link_to 'Update', station_path(@station) %>
+    <% end %>
 
 
 

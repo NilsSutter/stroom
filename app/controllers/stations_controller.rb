@@ -65,6 +65,7 @@ class StationsController < ApplicationController
     # @user = current_user
     @station.user = current_user
     if @station.save
+      current_user.owner = true
       redirect_to station_path(@station)
     else
       render :new
