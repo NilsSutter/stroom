@@ -21,11 +21,11 @@ const initAutocompleteTwo = () => {
 export { initAutocompleteTwo };
 
 // autocomplete on landing page
-const initAutocompleteThree = () => {
-  const addressInput = document.getElementById('search_address');
-  if (addressInput) {
-    places({ container: addressInput });
-  }
-};
+// const initAutocompleteThree = () => {
+//   const addressInput = document.getElementById('search_address');
+//   if (addressInput) {
+//     places({ container: addressInput });
+//   }
+// };
 
-export { initAutocompleteThree };
+// export { initAutocompleteThree };
