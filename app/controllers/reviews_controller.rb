@@ -9,7 +9,7 @@ class ReviewsController < ApplicationController
     # tell review instance to which booking instance it belongs to
     @review.booking = @booking
     # check if the review was created
-    if @review.save!
+    if @review.save
       # if yes, redirect to detail-page
       redirect_to station_path(@station)
       # if not, render the show page
