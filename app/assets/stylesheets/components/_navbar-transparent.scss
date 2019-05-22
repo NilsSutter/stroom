@@ -1,7 +1,7 @@
 #navbar-background {
   background-color: transparent;
   position: relative;
-  top: -140px;
+  z-index: 1;
   a {
     color: white;
   }
