@@ -1,31 +1,31 @@
-
 <div class="py-3 px-1">
-  <div class="search-criteria">
-    <p>Showing <%= @charger %> chargers<% unless @address.empty? %> around <%= @address %><% end %>.</p>
+  <div class="search-criteria d-flex">
+    <% unless @address.empty? %>
+      <div class="search-item">
+        <%= @address %>
+      </div>
+    <% end %>
+    <% unless @charger.empty? %>
+      <div class="search-item">
+        <%= @charger %>
+      </div>
+    <% end %>
   </div>
-  <div class="row">
-    <div class="col-6">
+  <div class="d-flex">
+    <div class="w-70">
       <div id="stations">
-        <h3>Results</h3>
         <% if @stations.empty? %>
-          <p>There are currently no stations available in <em><%= @address %></em>  for your <em><%= @charger %> charger</em> </p>
+          <p>There are currently no stations available <% unless @address.empty? %>near <em><%= @address %></em><% end %><% unless @charger.empty? %> for your <em><%= @charger %></em> <% end %>.</p>
         <% else %>
           <% @stations.each do |station| %>
-            <%#= render './partials/card-station' %>
-            <%= link_to station.address, station_path(station) %>
-            <em><p><%= station.charger %></p></em>
+            <%= render partial: './partials/card-station', locals: {station: station} %>
           <% end %>
         <% end %>
       </div>
     </div>
-    <div class="col-6 index-map" id="map"
+    <div class="w-30 index-map" id="map"
       data-markers="<%= @markers.to_json %>"
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-
-
     </div>
   </div>
-
-  <!-- this link must be moved to navbar! -->
-  <%= link_to "create station", new_station_path  %>
 </div>

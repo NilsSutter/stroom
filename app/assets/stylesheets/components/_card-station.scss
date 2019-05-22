@@ -30,19 +30,19 @@ h2{
   background-color: $bg-color;
   width: 100vw;
   height: 100vh;
-}
- */
-.card-container {
+} */
+
+.container {
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   flex-direction: column;
 
   .card {
     position: relative;
-    width: 500px;
+    width: 99%;
     height: 200px;
     background-color: #fff;
     overflow: hidden;
@@ -73,7 +73,7 @@ h2{
       background-color: $bg-color;
     }
     ul {
-      z-index: 99;
+      z-index: 101;
       position: absolute;
       left: 39px;
       top: 5px;
@@ -87,7 +87,7 @@ h2{
       }
     }
     h2 {
-      z-index: 99;
+      z-index: 101;
       font-family: "Poppins", sans-serif;
       position: absolute;
       bottom: 0;
@@ -98,7 +98,7 @@ h2{
     }
 
     .fa-arrow-right {
-      z-index: 100;
+      z-index: 101;
       position: absolute;
       right: 75px;
       bottom: 25px;
@@ -122,7 +122,7 @@ h2{
       z-index: 100;
       width: 400px;
       height: 200px;
-      background-image: url($img-url);
+      /* background-image: url($img-url); */
       background-size: 100% 100%;
       filter: grayscale(100%);
     }
@@ -211,11 +211,4 @@ h2{
       background-color: $blue;
     }
   }
-}
-
-.dr {
-position: absolute;
-  bottom: 16px;
-  right: 16px;
-  width:100px;
 }
