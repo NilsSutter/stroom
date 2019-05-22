@@ -11,6 +11,8 @@ class ReviewPolicy < ApplicationPolicy
 
     def new?
       true
+      # ???? how to compare current station the user is on????
+
       # validation_arr = []
       # user.bookings.each do |booking|
       #   if booking.station_id == record.id && booking.confirmed
