@@ -2,6 +2,19 @@
   <div class="row">
     <div class="col-lg-8">
       <!-- img -->
+  <div class="row" style= "justify-content: space-around; margin-top: 32px;">
+    <div class="col-lg-8">
+      <div class="outer-image-div">
+        <div class="inner-image-div">
+          <% unless @station.photo != nil %>
+            <div style="width: 600px; height: 300px;"><p>no image uploaded</p></div>
+          <% else %>
+            <%= cl_image_tag @station.photo, height: 300, width: 500, crop: :fill %>
+            <%#= link_to 'delete photo', delete_photo_path(@station), class: "btn btn-primary" %>
+          <% end %>
+        </div>
+      </div>
+
 
       <div class="description-content">
 
@@ -85,110 +98,43 @@
     </div>
 
     <!-- Booking form -->
-    <div class="col-lg-6">
+    <div class="col-lg-4">
+      <div class="booking-form">
+        <div class="booking-form-content">
+            <div id="header-create-booking">
+              <h2 class="pb-3">Create a Booking!</h2>
+            </div>
+            <div id="price-create-booking">
+              <p><b>$ <%= @station.price %> </b></p><p id="price-per-hour">per hour</p>
+            </div>
+            <div id="booking-info-message">
+              <p>book now to get the best available rate</p>
+            </div>
+            <div class="booking-form-form">
+              <%= simple_form_for([@station, @new_booking]) do |f| %>
+                <%= f.input :start,
+                  as: :string,
+                  required: false,
+                  wrapper_html: { class: 'search-input-field' },
+                  input_html: {id: "range_start"},
+                  placeholder: "when will you arrive?" %>
+                <%= f.input :end,
+                  as: :string,
+                  required: false,
+                  placeholder: "your car should be fully charged by then",
+                  input_html: {id: "range_end"},
+                  wrapper_html: { class: 'search-input-field' } %>
+            </div>
+                <%= f.button :submit, class: "btn btn-primary w-100" %>
+              <% end %>
+        </div>
+      </div>
+
+
+
+
 
     </div>
 
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h1><%= @station.charger %>-charger at
-  <%= @station.address %></h1>
-
-<!-- START Review -->
-<div class="container">
-
-  <%= link_to "back to results", :back, :class => 'btn  btn-primary my-3' %>
-
-  <% unless @station.photo != nil %>
-    <p>No image uploaded</p>
-  <% else %>
-    <%= cl_image_tag @station.photo, height: 500, width: 300, crop: :fill %>
-    <%= link_to 'delete photo', delete_photo_path(@station) %>
-  <% end %>
-
-
-
-    <div class="w-50 px-3">
-      <h3>Upcoming Bookings</h3>
-      <ul>
-        <% @station.bookings.all.each do |item| %>
-        <li><%= item.start %> - <%= item.end %></li>
-        <% end %>
-      </ul>
-    </div>
-  </div>
-
-    <div class="d-flex">
-      <div class="w-50 px-3">
-        <h2>Leave a Review</h2>
-        <!-- Simple form for creating a new review -->
-        <%if @booking %>
-          <%= simple_form_for([@booking, @review]) do |f| %>
-          <%= f.input :accessability, as: :radio_buttons, collection: [1, 2, 3, 4, 5], wrapper: :vertical_collection_inline %>
-          <%= f.input :condition, as: :radio_buttons, collection: [1, 2, 3, 4, 5], wrapper: :vertical_collection_inline %>
-          <%= f.input :overall, as: :radio_buttons, collection: [1, 2, 3, 4, 5], wrapper: :vertical_collection_inline %>
-          <%= f.input :content %>
-          <%= f.button :submit, class: "btn btn-primary" %>
-        <% end %>
-      <% else %>
-        <p>There are currently no reviews.</p>
-      <% end %>
-
-    </div>
-    <div class="w-50 px-3">
-      <!-- Simple form for creating a new booking -->
-      <h2>Create a Booking</h2>
-      <%= simple_form_for([@station, @new_booking]) do |f| %>
-
-        <p>Charger Type: <%= @station.charger %></p>
-        <p>Address: <%= @station.address %></p>
-      <%#= f.input :accessability %>
-        <%= f.input :start, as: :datetime%>
-        <%= f.input :end, as: :datetime%>
-        <%= f.button :submit, class: "btn btn-primary" %>
-      <% end %>
-    </div>
-  </div>
-</div>
-<!-- END Review -->
-
-<!-- back to results -->

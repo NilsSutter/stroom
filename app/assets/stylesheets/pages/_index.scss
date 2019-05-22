@@ -1,2 +1,40 @@
 // Import page-specific CSS files here.
-@import "home";
+
+
+.index-map {
+  height: 100vh;
+  width: 100%;
+}
+
+#map {
+  position: sticky;
+  top: 0px;
+  right: 0px;
+}
+
+.dark-bg {
+  background-color: rgb(236, 236, 236);
+}
+
+.search-item {
+  background-color: #424242;
+  padding: 5px 10px;
+  border-radius: 2px;
+  color: white;
+  font-size: 0.7rem;
+}
+
+
+.w-30 {
+  width: 30%;
+}
+
+.w-70 {
+  width: 70%;
+}
+
+.search-criteria {
+  padding: 9px 80px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
