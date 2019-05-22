@@ -31,7 +31,7 @@ class StationsController < ApplicationController
     end
 
     # Mapbox Stuff
-    @stations = Station.where.not(latitude: nil, longitude: nil)
+    #@stations = Station.where.not(latitude: nil, longitude: nil)
 
     @markers = @stations.map do |station|
       {
