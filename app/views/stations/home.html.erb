@@ -1,7 +1,7 @@
 <div class="landing-page">
   <%= render '/partials/navbar-transparent'%>
 
-  <div class="d-flex">
+  <div class="d-flex move-down">
     <div class="search-form">
       <div class="search-form-content">
         <%= simple_form_for :search, url: stations_path, method: "GET", html: { class: 'form' } do |f| %>
