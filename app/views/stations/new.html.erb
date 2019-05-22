@@ -1,15 +1,21 @@
 
 <div class="container">
-  <h1>Create a station</h1>
-  <div class="create-form">
-    <%= simple_form_for(@station) do |f| %>
-      <%= f.input :address, label:false, placeholder: "where is the station located ..."%>
-      <%= f.input :charger, label: false, collection: ["tesla", "mercedes", "bmw", "volkswagen", "volvo", "ford"] %>
-      <br>
-      <%= f.input :photo %>
-      <%= f.input :photo_cache, as: :hidden %>
-      <%= f.submit "add station", class: "btn btn-primary" %>
-    <% end %>
+  <div class="login-wrapper">
+    <div class="outside-box">
+      <img src="https://images.unsplash.com/photo-1504250746301-659b6b611c48?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80" alt="" class="charging-image-login">
+      <div class="create-content">
+      <h1 style="text-align: center; font-family: 'Josefin Sans', sans-serif; font-weight: bold;" class="pb-3">Create a station!</h1>
+        <div class="create-form">
+          <%= simple_form_for(@station) do |f| %>
+            <%= f.input :address, wrapper_html: { class: 'login-input-text' }, placeholder: "enter location"%>
+            <%= f.input :price, wrapper_html: { class: 'login-input-text' }, placeholder: "price in $" %>
+            <%= f.input :charger, wrapper_html: { class: 'login-input-text' }, collection: ["tesla", "mercedes", "bmw", "volkswagen", "volvo", "ford"] %>
+            <%= f.input :photo, wrapper_html: { class: 'login-input-text' } %>
+            <%= f.input :photo_cache, as: :hidden %>
+            <%= f.submit "add station", class: "btn btn-primary w-100" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
-<!-- input field using mapbox autocomplete? -->
 </div>

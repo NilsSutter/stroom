@@ -1,0 +1,87 @@
+.booking-form {
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 3px 3px 2px rgba(0, 0, 0, 0.2);
+  position: fixed;
+  top: 90px;
+  // width: 355px;
+}
+
+.booking-form-content {
+  padding: 25px;
+}
+
+.booking-form-form {
+  // border-bottom: 0.5px solid #C0C0C0;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.search-input-field {
+  color: gray;
+  font-size:13px;
+}
+
+#header-create-booking {
+  h2 {
+    text-align: center;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: bold;
+    border-bottom: 0.5px solid #C0C0C0;
+    }
+  margin-bottom: 20px;
+}
+
+#price-create-booking {
+  display: flex;
+  border-bottom: 0.5px solid #C0C0C0;
+  margin-bottom: 20px;
+  p {
+    font-size: 15px;
+  }
+}
+
+#price-per-hour {
+  font-weight: lighter;
+  font-size: 13px;
+  padding-left: 4px;
+}
+
+#booking-info-message {
+  font-weight: lighter;
+  font-size: 10px;
+  color: #C0C0C0;
+}
+
+#range_start {
+  font-size: 10px;
+  padding: 20px;
+}
+
+#range_end {
+  font-size: 10px;
+  padding: 20px;
+}
+
+.outer-image-div {
+  height: 300px;
+  width: 600px;
+  overflow: hidden;
+}
+
+.inner-image-div {
+  height: 100%;
+     width: 100%;
+     background-size: cover;
+     background-position: center;
+     transition: all 0.5s ease;
+}
+
+.inner-image-div:hover {
+  transform: scale(1.2);
+}
+
+
+
+
+
