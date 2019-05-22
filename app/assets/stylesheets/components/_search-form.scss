@@ -1,11 +1,11 @@
 .search-form {
   background-color: white;
-  border-radius: 5px;
+  border-radius: 2px;
   box-shadow: 0 3px 3px 2px rgba(0, 0, 0, 0.2);
   position: relative;
-  left: 90px;
-  bottom: 182px;
-  width: 355px;
+  left: 130px;
+  z-index: 2000;
+
 }
 
 .search-form-content {
@@ -14,7 +14,7 @@
 
 .search-input-field {
   color: gray;
-  font-size:13px;
+  font-size: 13px;
 }
 
 /* Time eases in ;) */

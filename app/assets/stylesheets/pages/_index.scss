@@ -19,6 +19,7 @@
 .search-item {
   background-color: #424242;
   padding: 5px 10px;
+  margin-right: 20px;
   border-radius: 2px;
   color: white;
   font-size: 0.7rem;
@@ -34,7 +35,8 @@
 }
 
 .search-criteria {
-  padding: 9px 80px;
+  padding: 9px 16px;
   margin-bottom: 20px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  background-color:  rgb(19, 19, 19);
 }
