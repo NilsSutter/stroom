@@ -10,7 +10,7 @@
   height: 100vh;
 }
 
-.front-page-text h1, p {
+.front-page-text > h1, .front-page-text > p {
   font-family: 'Josefin Sans', sans-serif;
   color: white;
 }
