@@ -1,7 +1,14 @@
-.navbar-lewagon-transparent {
+#navbar-background {
+  background-color: transparent;
+  position: relative;
+  top: -140px;
+  a {
+    color: white;
+  }
+}
+.navbar-lewagon {
   justify-content: space-between;
   background: white;
-  background-color: transparent;
 }
 
 .navbar-lewagon .navbar-collapse {
