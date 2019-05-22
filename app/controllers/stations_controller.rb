@@ -47,6 +47,11 @@ class StationsController < ApplicationController
     @review = Review.new
     @booking = @station.bookings.last
     @new_booking = Booking.new
+    @station_reviews = @station.reviews
+    # compute averages
+    @overall_avg = compute_overall_avg.round
+    @accessability_avg = compute_accessibility.round
+    @condition_avg = compute_condition.round
   end
 
   def new
@@ -87,5 +92,33 @@ class StationsController < ApplicationController
 
   def params_station
     params.require(:station).permit(:address, :charger, :photo)
+  end
+
+  # Methods for review computations
+  def compute_overall_avg
+    overall = []
+    @station_reviews.each do |review|
+      overall << review.overall
+    end
+    overall_sum = overall.reduce(0) { |sum, num| sum + num }
+    overall_sum.to_f / overall.count
+  end
+
+  def compute_accessibility
+    accessibility = []
+    @station_reviews.each do |review|
+      accessibility << review.accessability
+    end
+    accessibility_sum = accessibility.reduce(0) { |sum, num| sum + num }
+    accessibility_sum.to_f / accessibility.count
+  end
+
+  def compute_condition
+    condition = []
+    @station_reviews.each do |review|
+      condition << review.condition
+    end
+    condition_sum = condition.reduce(0) { |sum, num| sum + num }
+    condition_sum.to_f / condition.count
   end
 end
