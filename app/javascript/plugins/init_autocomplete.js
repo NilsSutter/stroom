@@ -8,3 +8,14 @@ const initAutocomplete = () => {
 };
 
 export { initAutocomplete };
+
+
+
+const initAutocompleteTwo = () => {
+  const addressInput = document.getElementById('station_address');
+  if (addressInput) {
+    places({ container: addressInput });
+  }
+};
+
+export { initAutocompleteTwo };
