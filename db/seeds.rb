@@ -27,9 +27,21 @@ uid_a = User.all.first.id
 uid_b = User.all.second.id
 uid_c = User.all.third.id
 
-Station.create!(address: "Wendenweg 6, 13595 Berlin, Germany", charger: "bmw", user_id: uid_a)
-Station.create!(address: "Klingenhofer Steig 11A, 13587 Berlin, Germany", charger: "tesla", user_id: uid_b)
-Station.create!(address: "Innungswall 8, 38518 Gifhorn, Germany", charger: "volvo", user_id: uid_c)
+url_a = "https://images.unsplash.com/photo-1523828342112-3deb811c3451?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1600&q=80"
+url_b = "https://images.unsplash.com/photo-1472377521129-f4ddafa8b372?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80"
+url_c = "https://images.unsplash.com/photo-1439158741799-12ded9a3ba30?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1721&q=80"
+
+station_a = Station.new(address: "Wendenweg 6, 13595 Berlin, Germany", charger: "bmw", user_id: uid_a, price: 0.4)
+station_b = Station.new(address: "Klingenhofer Steig 11A, 13587 Berlin, Germany", charger: "tesla", user_id: uid_b, price: 0.4)
+station_c = Station.new(address: "Innungswall 8, 38518 Gifhorn, Germany", charger: "volvo", user_id: uid_c, price: 1.4)
+
+station_a.remote_photo_url = url_a
+station_b.remote_photo_url = url_b
+station_c.remote_photo_url = url_c
+
+station_a.save!
+station_b.save!
+station_c.save!
 
 
 # Create 4 Bookings
