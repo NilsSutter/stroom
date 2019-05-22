@@ -1,0 +1,29 @@
+.review-overall-styling {
+  width: 80%;
+  margin: 0 auto;
+  p {
+    margin: 0;
+  }
+}
+
+.avg-rating {
+  margin: 0;
+  border-bottom: 1px solid lightgrey;
+  padding: 20px 0;
+  h3 {
+    display: inline;
+    margin-right: 10px;
+  }
+}
+
+.rating-header {
+  border-bottom: 1px solid lightgrey;
+  padding: 20px 0;
+  margin: 20px 0;
+}
+
+.review-content-box {
+  border-bottom: 1px solid lightgrey;
+  padding: 20px 0;
+  margin: 0;
+}

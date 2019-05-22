@@ -1,22 +1,81 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-6">
+    <div class="col-lg-8">
       <!-- img -->
 
       <div class="description-content">
 
       </div>
 
-      <div class="avg-rating">
+      <!-- Reviews -->
+      <div class="review-overall-styling">
+        <div class="avg-rating">
+          <div class="rating-header">
+            <h3> <%= @station.reviews.count %> Reviews</h3>
+            <span>Overall: </span>
+            <!-- star rating overall -->
+              <span>
+                <% @overall_avg.times do %>
+                  <span>
+                    <i class="fas fa-star"></i>
+                  </span>
+                <% end %>
+              </span>
+              <!-- empty stars -->
+              <span>
+                <% (5-@overall_avg).times do %>
+                  <span>
+                    <i class="far fa-star"></i>
+                  </span>
+                <% end %>
+              </span>
+          </div>
+          <div>
+            <!-- star rating accessability -->
+            <p>Accessability: </p>
+              <span>
+                <% @accessability_avg.times do %>
+                  <span>
+                    <i class="fas fa-star"></i>
+                  </span>
+                <% end %>
+              </span>
+              <!-- empty stars -->
+              <span>
+                <% (5-@accessability_avg).times do %>
+                  <span>
+                    <i class="far fa-star"></i>
+                  </span>
+                <% end %>
+              </span>
+              <!-- star rating condition -->
+            <p>Condition:</p>
+              <span>
+                <% @condition_avg.times do %>
+                  <span>
+                    <i class="fas fa-star"></i>
+                  </span>
+                <% end %>
+              </span>
+              <!-- empty stars -->
+              <span>
+                <% (5-@condition_avg).times do %>
+                  <span>
+                    <i class="far fa-star"></i>
+                  </span>
+                <% end %>
+              </span>
+          </div>
+        </div>
 
-      </div>
-
-      <div class="avg-rating-detail">
-
-      </div>
-
-      <div class="rating-content">
-
+        <div class="rating-content">
+          <!-- Display Reviews -->
+          <% @station.reviews.each do |review| %>
+            <div class="review-content-box">
+              <p><%= review.content %></p>
+            </div>
+          <% end %>
+        </div>
       </div>
 
       <!-- Map -->
@@ -32,8 +91,6 @@
 
   </div>
 </div>
-
-
 
 
 
@@ -89,20 +146,6 @@
   <% end %>
 
 
-  <div class="d-flex">
-    <div class="w-50 px-3">
-      <h3>Reviews</h3>
-      <!-- Display Reviews -->
-      <% @station.reviews.each do |review| %>
-        <div class="my-5">
-          <p>Accessability: <%= review.accessability %></p>
-          <p>Condition: <%= review.condition %></p>
-          <p>Overall: <%= review.overall %></p>
-          <p><%= review.content %></p>
-        </div>
-      <% end %>
-    </div>
-  </div>
 
     <div class="w-50 px-3">
       <h3>Upcoming Bookings</h3>
@@ -120,9 +163,9 @@
         <!-- Simple form for creating a new review -->
         <%if @booking %>
           <%= simple_form_for([@booking, @review]) do |f| %>
-          <%= f.input :accessability %>
-          <%= f.input :condition %>
-          <%= f.input :overall %>
+          <%= f.input :accessability, as: :radio_buttons, collection: [1, 2, 3, 4, 5], wrapper: :vertical_collection_inline %>
+          <%= f.input :condition, as: :radio_buttons, collection: [1, 2, 3, 4, 5], wrapper: :vertical_collection_inline %>
+          <%= f.input :overall, as: :radio_buttons, collection: [1, 2, 3, 4, 5], wrapper: :vertical_collection_inline %>
           <%= f.input :content %>
           <%= f.button :submit, class: "btn btn-primary" %>
         <% end %>
