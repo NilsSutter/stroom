@@ -39,6 +39,7 @@
   margin-bottom: 20px;
   p {
     font-size: 15px;
+    color: black;
   }
 }
 
@@ -48,7 +49,7 @@
   padding-left: 4px;
 }
 
-#booking-info-message {
+#booking-info-message p {
   font-weight: lighter;
   font-size: 10px;
   color: #C0C0C0;
