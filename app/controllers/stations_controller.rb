@@ -49,9 +49,16 @@ class StationsController < ApplicationController
     @new_booking = Booking.new
     @station_reviews = @station.reviews
     # compute averages
+
+    unless @station.reviews.empty?
     @overall_avg = compute_overall_avg.round
     @accessability_avg = compute_accessibility.round
     @condition_avg = compute_condition.round
+  else
+    @overall_avg = 0
+    @accessability_avg = 0
+    @condition_avg = 0
+  end
   end
 
   def new
