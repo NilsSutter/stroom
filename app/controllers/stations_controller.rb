@@ -43,13 +43,14 @@ class StationsController < ApplicationController
   end
 
   def show
-    @station = Station.find(params[:id])
+    # TO DO: Refactor reviews into review controller
+    @new_booking = Booking.new
     @review = Review.new
     @booking = @station.bookings.last
-    @new_booking = Booking.new
     @station_reviews = @station.reviews
 
-    # compute averages
+    # compute averages PUT IN MODEL?
+
     unless @station.reviews.empty?
       @overall_avg = compute_overall_avg.round
       @accessability_avg = compute_accessibility.round
@@ -59,6 +60,12 @@ class StationsController < ApplicationController
       @accessability_avg = 0
       @condition_avg = 0
     end
+
+    @marker =
+      [{
+        lat: @station.latitude,
+        lng: @station.longitude
+      }]
   end
 
   def new

@@ -8,7 +8,7 @@ class BookingsController < ApplicationController
 
     authorize @booking
 
-    if @booking.save!
+    if @booking.save
       flash[:alert] = "Booking Created!"
       redirect_to station_path(@station)
     else
