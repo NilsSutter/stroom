@@ -17,7 +17,8 @@ const initMapbox = () => {
       style: 'mapbox://styles/mapbox/streets-v10'
     });
 
-    map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken, mapboxgl: mapboxgl }));
+    // Uncomment to put in search bar
+    //map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken, mapboxgl: mapboxgl }));
 
     const markers = JSON.parse(mapElement.dataset.markers);
     markers.forEach((marker) => {

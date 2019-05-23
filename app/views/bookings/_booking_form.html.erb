@@ -1,0 +1,15 @@
+<%= simple_form_for([@station, @new_booking]) do |f| %>
+  <%= f.input :start,
+    as: :string,
+    required: false,
+    wrapper_html: { class: 'search-input-field' },
+    input_html: {id: "range_start"},
+    placeholder: "when will you arrive?" %>
+  <%= f.input :end,
+    as: :string,
+    required: false,
+    placeholder: "your car should be fully charged by then",
+    input_html: {id: "range_end"},
+    wrapper_html: { class: 'search-input-field' } %>
+  <%= f.button :submit, class: "btn btn-primary w-100" %>
+<% end %>
