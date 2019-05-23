@@ -12,6 +12,22 @@
       <li class="nav-item active">
         <%= link_to "create station", new_station_path, class: "nav-link" %>
       </li>
+      <!-- testing in navbar search -->
+      <li class="nav-item active">
+        <form class="form-inline my-2 my-lg-0">
+          <%= simple_form_for :search, url: stations_path, method: "GET", html: { class: 'form' } do |f| %>
+          <%= f.input :address,
+            input_html: {value: ""},
+            wrapper_html: { class: 'login-input-text' },
+            placeholder: "location",
+            label:false,
+            required: false %>
+            <%= f.input :radius, as: :hidden,
+            input_html: {value: @radius},
+            wrapper_html: { class: '' } %>
+            <% end %>
+        </form>
+      </li>
       <!-- check if user is not signed in and display Sign up/Sign in if thats the case -->
       <% unless user_signed_in? %>
         <li class="nav-item">
@@ -40,3 +56,6 @@
     </ul>
   </div>
 </div>
+
+
+

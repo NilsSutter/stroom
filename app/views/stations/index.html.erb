@@ -5,12 +5,12 @@
         <%= @address %>
       </div>
     <% end %>
-    <% unless @charger.empty? %>
+    <% unless @charger.nil? || @charger.empty?  %>
       <div class="search-item">
         <%= @charger %>
       </div>
     <% end %>
-    <% if @charger.empty? && @address.empty? %>
+    <% if @charger.nil? || @charger.empty? && @address.empty? %>
       <div class="search-item">
         All Stations
       </div>

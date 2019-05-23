@@ -13,14 +13,14 @@ class StationsController < ApplicationController
     @address = @search["address"]
     @radius = @search["radius"].to_i
 
-    if @address.empty? && @charger.empty?
+    if (@address.empty? || @address.nil?) && (@charger.nil? || @charger.empty?)
       @stations = Station.all
 
-    elsif @address.empty?
+    elsif @address.nil? || @address.empty?
       sql_query = " \ stations.charger @@ :charger"
       @stations = Station.where(sql_query, charger: @charger)
 
-    elsif @charger.empty?
+    elsif @charger.nil? || @charger.empty?
       # sql_query = " \ stations.address @@ :address"
       # @stations = Station.where(sql_query, address: @address)
       @stations = Station.near(@address, @radius)
