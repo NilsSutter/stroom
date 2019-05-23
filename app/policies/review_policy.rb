@@ -6,13 +6,7 @@ class ReviewPolicy < ApplicationPolicy
   end
 
   def create?
-    # ???? how to compare current station the station the user is on????
-    true
-    # user.bookings.each do |booking|
-    #   raise
-    #   booking.station_id == record.id && booking.confirmed ? true : false
-    # end
-
+    record.station.user != user && record.booking.user == user
   end
 
   def new?
