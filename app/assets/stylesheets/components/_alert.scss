@@ -1,6 +1,11 @@
 .alert {
   position: fixed;
-  bottom: 16px;
-  right: 16px;
+  bottom: 20px;
+  right: 20px;
+  width: 260px;
   z-index: 1000;
+  text-align: center;
+  // opacity: 0.5;
+  // background: rgb(211, 237, 218);
+  // border-radius: 4px;
 }
