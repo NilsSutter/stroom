@@ -36,8 +36,8 @@ class StationsController < ApplicationController
     @markers = @stations.map do |station|
       {
         lat: station.latitude,
-        lng: station.longitude
-        #image_url: helpers.asset_url('REPLACE_THIS_WITH_YOUR_IMAGE_IN_ASSETS')
+        lng: station.longitude,
+        marker_image_url: helpers.asset_url('maps-and-flags')
       }
     end
   end
