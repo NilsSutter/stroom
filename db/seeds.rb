@@ -65,5 +65,7 @@ content_array = [
 
 puts "Creating Reviews..."
 Booking.all.each do |each|
-  Review.create!(accessability: rand(0..5), condition: rand(0..5), overall: rand(0..5), booking_id: each.id, content: content_array[rand(0..3)])
+  xxx = Review.new(accessability: rand(0..5), condition: rand(0..5), overall: rand(0..5), booking_id: each.id, content: content_array[rand(0..3)])
+  xxx.station = station_a
+  xxx.save
 end
