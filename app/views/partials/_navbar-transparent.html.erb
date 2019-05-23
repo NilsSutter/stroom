@@ -10,7 +10,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <%= link_to "Home", root_path, class: "nav-link" %>
+        <%= link_to "Create Station", new_station_path, class: "nav-link" %>
       </li>
       <!-- check if user is not signed in and display Sign up/Sign in if thats the case -->
       <% if !user_signed_in? %>
@@ -26,7 +26,7 @@
           <!-- display email address if user is signed in -->
           <% if user_signed_in? %>
             <button class="btn btn-secondary dropdown-toggle" type="  button" id="dropdownMenuButtonTransparent" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <%= current_user.email %></button>
+              <%= current_user.first_name %>  </button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <%= link_to "List a charger station", new_station_path, class: "dropdown-item" %>
                 <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
@@ -37,8 +37,3 @@
     </ul>
   </div>
 </div>
-
-
-
-
-

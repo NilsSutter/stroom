@@ -10,7 +10,7 @@ class StationPolicy < ApplicationPolicy
   end
 
   def new?
-    true || is_user_admin?
+    true 
   end
 
   def update?

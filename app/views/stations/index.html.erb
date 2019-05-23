@@ -10,7 +10,16 @@
         <%= @charger %>
       </div>
     <% end %>
+<<<<<<< HEAD
+
+      <div class="search-item">
+        <%= @radius %> km Radius
+      </div>
+
+    <% if @charger.empty? && @address.empty? %>
+=======
     <% if @charger.nil? || @charger.empty? && @address.empty? %>
+>>>>>>> master
       <div class="search-item">
         All Stations
       </div>
@@ -20,7 +29,7 @@
     <div class="w-70">
       <div id="stations">
         <% if @stations.empty? %>
-          <p class="no-stations-text">There are currently no stations that match your search.</p>
+          <p class="no-stations-text">There are currently no stations that match your search.<br><em>Try expanding your radius or changing your location.</em></p>
         <% else %>
           <% @stations.each do |station| %>
             <%= render partial: './partials/card-station', locals: {station: station} %>
