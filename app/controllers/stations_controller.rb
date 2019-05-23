@@ -11,6 +11,7 @@ class StationsController < ApplicationController
     @search = params[:search]
     @charger = @search["charger"]
     @address = @search["address"]
+    @radius = @search["radius"].to_i
 
     if @address.empty? && @charger.empty?
       @stations = Station.all
@@ -22,11 +23,11 @@ class StationsController < ApplicationController
     elsif @charger.empty?
       # sql_query = " \ stations.address @@ :address"
       # @stations = Station.where(sql_query, address: @address)
-      @stations = Station.near(@address, 100)
+      @stations = Station.near(@address, @radius)
 
     else
       sql_query = " \ stations.charger @@ :charger"
-      @stations = Station.near(@address, 100).where(sql_query, charger: @charger)
+      @stations = Station.near(@address, @radius).where(sql_query, charger: @charger)
     end
 
     # Mapbox Stuff
