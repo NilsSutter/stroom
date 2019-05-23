@@ -1,5 +1,5 @@
 import flatpickr from "flatpickr"
-import "flatpickr/dist/themes/airbnb.css" // Note this is important!
+import "flatpickr/dist/themes/material_orange.css" // Note this is important!
 import "flatpickr/dist/flatpickr.min.css"
 import rangePlugin from "flatpickr/dist/plugins/rangePlugin"
 
@@ -7,7 +7,13 @@ import rangePlugin from "flatpickr/dist/plugins/rangePlugin"
 flatpickr("#range_start", {
   enableTime: true,
   time_24hr: true,
-  plugins: [new rangePlugin({ input: "#range_end"})]
+  minDate: "today"
+})
+
+flatpickr("#range_end", {
+  enableTime: true,
+  time_24hr: true,
+  minDate: "today"
 })
 
 // on home page
