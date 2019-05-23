@@ -6,7 +6,9 @@ class ReviewPolicy < ApplicationPolicy
   end
 
   def create?
-    record.station.user != user && record.booking.user == user
+    # "i can create a review if i am not owner and i booked the station"
+
+    record.station.user != user && user.bookings.include?(record.booking)
   end
 
   def new?

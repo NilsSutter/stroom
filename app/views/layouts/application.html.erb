@@ -18,9 +18,10 @@
     <!-- START default navbar -->
     <%= render '/partials/navbar' unless @disable_nav %>
     <!-- END navbar -->
+    <!-- render flashes in case of no authentification -->
+    <%= render 'partials/flashes'%>
     <%= yield %>
     <p class="notice" style="margin-bottom: 0px;"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
   </body>
