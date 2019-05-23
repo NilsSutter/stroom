@@ -10,12 +10,17 @@
         <%= @charger %>
       </div>
     <% end %>
+    <% if @charger.empty? && @address.empty? %>
+      <div class="search-item">
+        All Stations
+      </div>
+    <% end %>
   </div>
   <div class="d-flex">
     <div class="w-70">
       <div id="stations">
         <% if @stations.empty? %>
-          <p>There are currently no stations available <% unless @address.empty? %>near <em><%= @address %></em><% end %><% unless @charger.empty? %> for your <em><%= @charger %></em> <% end %>.</p>
+          <p class="no-stations-text">There are currently no stations that match your search.</p>
         <% else %>
           <% @stations.each do |station| %>
             <%= render partial: './partials/card-station', locals: {station: station} %>

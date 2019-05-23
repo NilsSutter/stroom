@@ -43,13 +43,14 @@ class StationsController < ApplicationController
   end
 
   def show
+    # TO DO: Refactor reviews into review controller
     @new_booking = Booking.new
-    @station = Station.find(params[:id])
     @review = Review.new
     @booking = @station.bookings.last
     @station_reviews = @station.reviews
-    # compute averages
 
+
+    # compute averages PUT IN MODEL?
     unless @station.reviews.empty?
       @overall_avg = compute_overall_avg.round
       @accessability_avg = compute_accessibility.round
