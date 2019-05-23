@@ -16,22 +16,21 @@ class StationsController < ApplicationController
       @stations = Station.all
 
     elsif @address.empty?
-
       sql_query = " \ stations.charger @@ :charger"
       @stations = Station.where(sql_query, charger: @charger)
 
     elsif @charger.empty?
-
-      sql_query = " \ stations.address @@ :address"
-      @stations = Station.where(sql_query, address: @address)
+      # sql_query = " \ stations.address @@ :address"
+      # @stations = Station.where(sql_query, address: @address)
+      @stations = Station.near(@address, 100)
 
     else
-      sql_query = " \ stations.address @@ :address \ AND stations.charger @@ :charger"
-      @stations = Station.where(sql_query, address: @address, charger: @charger)
+      sql_query = " \ stations.charger @@ :charger"
+      @stations = Station.near(@address, 100).where(sql_query, charger: @charger)
     end
 
     # Mapbox Stuff
-    #@stations = Station.where.not(latitude: nil, longitude: nil)
+    # @stations = Station.where.not(latitude: nil, longitude: nil)
 
     @markers = @stations.map do |station|
       {
@@ -48,10 +47,7 @@ class StationsController < ApplicationController
     @review = Review.new
     @booking = @station.bookings.last
     @station_reviews = @station.reviews
-
-
     # compute averages PUT IN MODEL?
-
     unless @station.reviews.empty?
       @overall_avg = compute_overall_avg.round
       @accessability_avg = compute_accessibility.round
@@ -61,8 +57,6 @@ class StationsController < ApplicationController
       @accessability_avg = 0
       @condition_avg = 0
     end
-
-
     @marker =
       [{
         lat: @station.latitude,

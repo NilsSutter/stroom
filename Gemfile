@@ -18,6 +18,8 @@ gem 'devise'
 gem 'validates_overlap'
 gem 'pundit'
 gem 'geocoder'
+gem 'pg_search'
+gem 'algoliasearch'
 
 
 gem 'cloudinary', '~> 1.9.1'
