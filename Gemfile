@@ -19,6 +19,8 @@ gem 'validates_overlap'
 gem 'pundit'
 gem 'pundit_custom_errors'
 gem 'geocoder'
+gem 'pg_search'
+gem 'algoliasearch'
 
 
 gem 'cloudinary', '~> 1.9.1'

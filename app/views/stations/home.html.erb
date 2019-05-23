@@ -7,13 +7,21 @@
         <%= simple_form_for :search, url: stations_path, method: "GET", html: { class: 'form' } do |f| %>
           <%= f.input :address,
             input_html: {value: ""},
-            wrapper_html: { class: 'search-input-field' },
+            wrapper_html: { class: 'login-input-text' },
+            placeholder: "location",
             required: false %>
           <%= f.input :charger,
             collection: ["Tesla", "Mercedes", "BMW", "Volkswagen", "Volvo", "Ford"],
-            wrapper_html: { class: 'search-input-field' },
+            wrapper_html: { class: 'login-input-text' },
             required: false,
-            label: "Charging Port" %>
+            label: "Charging Port",
+            prompt: "type of car" %>
+          <%= f.input :radius,
+            as: :integer,
+            required: false,
+            wrapper_html: { class: 'login-input-text' },
+            label: "Radius",
+            placeholder: "in km" %>
           <%= f.input :start,
             as: :string,
             required: false,
