@@ -21,14 +21,19 @@
       </div>
 
       <!-- Reviews -->
+
+      <% if @reviews %>
+
+
       <div class="review-overall-styling">
         <div class="avg-rating">
           <div class="rating-header">
             <h3> <%= @station.reviews.count %> Reviews</h3>
+
             <span>Overall: </span>
             <!-- star rating overall -->
               <span>
-                <% unless @overall_avg == 0 %>
+                <% unless @overall_avg == 0  %>
                   <% @overall_avg.times do %>
                     <span>
                       <i class="fas fa-star"></i>
@@ -104,11 +109,12 @@
           <% end %>
         </div>
         <!-- Simple form for creating a new review -->
+      </div>
+  <% end %>
+
         <%if @booking %>
           <%= render 'reviews/reviewform' %>
         <% end %>
-      </div>
-
 
       <!-- START Map -->
       <div>
@@ -145,3 +151,4 @@
       </div>
     </div>
   </div>
+

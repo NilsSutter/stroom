@@ -48,6 +48,7 @@ class StationsController < ApplicationController
     @review = Review.new
     @booking = @station.bookings.last
     @station_reviews = @station.reviews
+    @reviews = Review.where(station: @station)
 
 
     # compute averages PUT IN MODEL?

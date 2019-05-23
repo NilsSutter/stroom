@@ -17,6 +17,7 @@ gem 'webpacker'
 gem 'devise'
 gem 'validates_overlap'
 gem 'pundit'
+gem 'pundit_custom_errors'
 gem 'geocoder'
 
 
