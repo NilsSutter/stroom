@@ -65,6 +65,7 @@ class StationsController < ApplicationController
         lat: @station.latitude,
         lng: @station.longitude
       }]
+      #test
   end
 
   def new
