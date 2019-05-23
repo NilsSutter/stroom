@@ -10,15 +10,16 @@ class BookingsController < ApplicationController
     @station = Station.find(params[:station_id])
     @new_booking.user = current_user
     @new_booking.station = @station
-
-    authorize @new_booking
-
-    if @new_booking.save
-      flash[:alert] = "Booking Created!"
-      redirect_to station_path(@station)
-    else
-      render './stations/show'
-    end
+# if statement außenrum bauen vllt? ändert sich zumindest der error nicht
+    # unless @new_booking.user_id == current_user.id
+      if @new_booking.save
+        flash[:alert] = "Booking Created!"
+        redirect_to station_path(@station)
+        authorize @new_booking
+      else
+        render './stations/show'
+      end
+    # end
   end
 
   def destroy
