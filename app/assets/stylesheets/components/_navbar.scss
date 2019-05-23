@@ -4,6 +4,33 @@
   color: white;
 }
 
+li.navbar-search {
+  margin-right: 300px;
+}
+
+.navbar-create-btn {
+    background-color: #f99441;
+    margin-right: 20px;
+    border-radius: 2px;
+    padding-left: 0px !important;
+}
+.navbar-create-btn:hover {
+    background-color: #f98628;
+}
+
+
+#algolia-places-listbox-0 {
+  z-index: 110;
+}
+.navbar-search-field > .algolia-places > .ap-input {
+  width: 50vw;
+}
+
+.navbar-search-field {
+  z-index: 110;
+
+}
+
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
 }

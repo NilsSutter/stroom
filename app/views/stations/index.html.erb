@@ -1,27 +1,30 @@
 <div>
   <div class="search-criteria d-flex">
-    <% unless @address.empty? %>
+    <% unless @address.nil? || @address.empty? %>
       <div class="search-item">
         <%= @address %>
       </div>
     <% end %>
+
     <% unless @charger.nil? || @charger.empty?  %>
       <div class="search-item">
         <%= @charger %>
       </div>
     <% end %>
 
+    <% unless @radius.nil? || @radius.zero?  %>
       <div class="search-item">
         <%= @radius %> km Radius
       </div>
+    <% end %>
 
-    <% if @charger.empty? && @address.empty? %>
-
+    <% if (@charger.nil? || @charger.empty?) && (@address.nil? || @address.empty?) %>
       <div class="search-item">
         All Stations
       </div>
     <% end %>
   </div>
+
   <div class="d-flex">
     <div class="w-70">
       <div id="stations">
