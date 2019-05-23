@@ -127,7 +127,7 @@
             <li class="list-group-item" style="font-size: 13px; color: grey;">upcoming bookings for this station</li>
             <% @station.bookings.each do |booking| %>
               <li class="list-group-item">
-                <strong style="color: darkslategrey;"><%= booking.start.strftime("%b %e, %l:%M %p") %></strong>
+                <strong style="color: darkslategrey;"><%= booking.start.strftime("%b %e, %l:%M %p") %></strong> - <strong style="color: darkslategrey;"><%=  booking.end.strftime("%b %e, %l:%M %p") %> </strong>
               </li>
             <% end %>
           </ul>
