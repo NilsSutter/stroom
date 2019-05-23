@@ -1,7 +1,7 @@
 class BookingPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.all
+      scope.where(user_id: user.id)
     end
   end
 
@@ -11,5 +11,9 @@ class BookingPolicy < ApplicationPolicy
 
   def new?
     true
+  end
+
+  def destroy?
+    record.user == user || user.admin
   end
 end

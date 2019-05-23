@@ -1,0 +1,15 @@
+<div class="container">
+  <ul>
+    <% @bookings.each do |item| %>
+      <li>
+        <%= item.station.charger %> charger at
+        <em><%= item.station.address %></em> on
+        <%= item.start %> until <%= item.end %>
+        <br>
+        Estimated cost: €<%= ((item.end - item.start)/60) * item.station.price %>
+        <br>
+        <%= link_to "Cancel Booking", booking_path(item), method: :delete %>
+      </li>
+    <% end %>
+  </ul>
+</div>
