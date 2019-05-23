@@ -59,6 +59,11 @@ class StationsController < ApplicationController
       @accessability_avg = 0
       @condition_avg = 0
     end
+    @marker =
+      [{
+        lat: @station.latitude,
+        lng: @station.longitude
+      }]
   end
 
   def new
