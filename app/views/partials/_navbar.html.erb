@@ -44,11 +44,11 @@
             <button class="btn btn-secondary dropdown-toggle" type="  button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <%= current_user.first_name %></button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="dropdown-menu-items">
-                <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
                 <% if current_user.owner %>
                   <%= link_to "My Stations", bookings_path, class: "dropdown-item" %>
                 <% end %>
                 <%= link_to "Bookings", bookings_path, class: "dropdown-item" %>
+                <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
               </div>
           <% end %>
         </div>
