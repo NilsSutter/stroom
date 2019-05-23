@@ -49,6 +49,7 @@ class StationsController < ApplicationController
     @booking = @station.bookings.last
     @station_reviews = @station.reviews
 
+
     # compute averages PUT IN MODEL?
 
     unless @station.reviews.empty?
@@ -60,6 +61,7 @@ class StationsController < ApplicationController
       @accessability_avg = 0
       @condition_avg = 0
     end
+
 
     @marker =
       [{
