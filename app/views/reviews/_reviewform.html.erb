@@ -1,0 +1,7 @@
+<%= simple_form_for([@booking, @review]) do |f| %>
+  <%= f.input :accessability, as: :radio_buttons, collection: [1, 2, 3, 4, 5], wrapper: :vertical_collection_inline %>
+  <%= f.input :condition, as: :radio_buttons, collection: [1, 2, 3, 4, 5], wrapper: :vertical_collection_inline %>
+  <%= f.input :overall, as: :radio_buttons, collection: [1, 2, 3, 4, 5], wrapper: :vertical_collection_inline %>
+  <%= f.input :content, label: "Comment?" %>
+  <%= f.button :submit, class: "btn btn-primary" %>
+<% end %>
