@@ -42,13 +42,13 @@
       <h2>Opening a door to the future</h2>
       <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad eum dolorum architecto obcaecati enim dicta praesentium, quam nobis! Neque ad aliquam facilis numquam. Veritatis, sit.</p>
       <!-- adding guard clause because code keeps breaking -->
-      <% if item.station.price != nil %>
         <p class="read-more">
           <a href="#">Read More</a>
-          <strong>€<%= ((item.end - item.start)/60) * item.station.price %></strong>
+          <% if item.station.price != nil %>
+            <strong>€<%= ((item.end - item.start)/60) * item.station.price %></strong>
+          <% end %>
             <%= link_to "Cancel Booking", booking_path(item), method: :delete, class:"display-right" %>
         </p>
-      <% end %>
     </div>
   </div>
   <% end %>
