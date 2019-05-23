@@ -1,9 +1,7 @@
 class BookingsController < ApplicationController
 
   def index
-    @bookings = Booking.where(user_id: params[:user_id])
-
-    authorize @bookings
+    @bookings = policy_scope(Booking)
   end
 
   def create
@@ -20,6 +18,13 @@ class BookingsController < ApplicationController
     else
       render './stations/show'
     end
+  end
+
+  def destroy
+    @booking = Booking.find(params[:id])
+    authorize @booking
+    @booking.destroy
+    redirect_to bookings_path
   end
 
   private
