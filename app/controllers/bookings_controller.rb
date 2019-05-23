@@ -2,6 +2,7 @@ class BookingsController < ApplicationController
 
   def index
     @bookings = policy_scope(Booking)
+    @stations = Station.where(user_id: current_user.id)
   end
 
   def create
