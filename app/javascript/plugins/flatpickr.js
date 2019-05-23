@@ -21,5 +21,6 @@ flatpickr(".datepicker", {
   enableTime: true,
   allowInput: true,
   time_24hr: true,
-  inline: true
+  inline: true,
+  minDate: "today"
 })
