@@ -1,5 +1,11 @@
 class BookingsController < ApplicationController
 
+  def index
+    @bookings = Booking.where(user_id: params[:user_id])
+
+    authorize @bookings
+  end
+
   def create
     @booking = Booking.new(params_create_booking)
     @station = Station.find(params[:station_id])

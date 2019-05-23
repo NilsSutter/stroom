@@ -14,12 +14,12 @@ User.delete_all
 
 # Create 5 Users
 puts "Creating Users..."
-User.create!(email: 'john2@gmail.com', password: 'topsecret', password_confirmation: 'topsecret')
-User.create!(email: 'TheHammer@gmail.com', password: 'topsecret', password_confirmation: 'topsecret')
-User.create!(email: 'Yourmom@hotmail.com', password: 'topsecret', password_confirmation: 'topsecret')
-User.create!(email: 'Fuzz@theWorks.de', password: 'topsecret', password_confirmation: 'topsecret')
-User.create!(email: 'NachoLover237@mail.dk', password: 'topsecret', password_confirmation: 'topsecret')
-User.create!(email: 'admin@stroom.de', password: 'admin!!', password_confirmation: 'admin!!', admin: true)
+User.create!(email: 'john2@gmail.com', password: 'topsecret', password_confirmation: 'topsecret', first_name: "John", last_name: "McCormick")
+User.create!(email: 'TheHammer@gmail.com', password: 'topsecret', password_confirmation: 'topsecret', first_name: "David", last_name: "Jhonson")
+User.create!(email: 'Yourmom@hotmail.com', password: 'topsecret', password_confirmation: 'topsecret', first_name: "Christian", last_name: "Jeffries")
+User.create!(email: 'Fuzz@theWorks.de', password: 'topsecret', password_confirmation: 'topsecret', first_name: "Jeff", last_name: "Plaut")
+User.create!(email: 'NachoLover237@mail.dk', password: 'topsecret', password_confirmation: 'topsecret', first_name: "Nicolas", last_name: "Hammer")
+User.create!(email: 'admin@cn.com', password: 'admin!!', password_confirmation: 'admin!!', admin: true, first_name: "Admin", last_name: "Admin")
 
 # Create 3 Stations
 puts "Creating Stations..."
