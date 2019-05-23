@@ -50,11 +50,16 @@ class StationsController < ApplicationController
     @station_reviews = @station.reviews
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     # compute averages
 =======
 
     # compute averages PUT IN MODEL?
 >>>>>>> master
+=======
+    # compute averages PUT IN MODEL?
+
+>>>>>>> c34e1e1c3a383f64874197265d2d1255b2645b05
     unless @station.reviews.empty?
       @overall_avg = compute_overall_avg.round
       @accessability_avg = compute_accessibility.round
@@ -65,14 +70,21 @@ class StationsController < ApplicationController
       @condition_avg = 0
     end
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+
+>>>>>>> c34e1e1c3a383f64874197265d2d1255b2645b05
     @marker =
       [{
         lat: @station.latitude,
         lng: @station.longitude
       }]
+<<<<<<< HEAD
       #test
 >>>>>>> master
+=======
+>>>>>>> c34e1e1c3a383f64874197265d2d1255b2645b05
   end
 
   def new
