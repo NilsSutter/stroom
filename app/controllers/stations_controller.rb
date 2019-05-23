@@ -90,9 +90,21 @@ class StationsController < ApplicationController
   end
 
   def edit
+    @station = Station.find(params[:id])
+    authorize @station
   end
 
   def update
+    @station = Station.find(params[:id])
+    authorize @station
+
+    if @station.update_attributes(params_station)
+      flash[:success] = "Station updated"
+      redirect_to bookings_path
+    else
+      render 'edit'
+    end
+
   end
 
   def destroy

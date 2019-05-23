@@ -25,7 +25,7 @@
         <div class="dropdown">
           <!-- display email address if user is signed in -->
           <% if user_signed_in? %>
-            <button class="btn btn-secondary dropdown-toggle" type="  button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button class="btn btn-secondary dropdown-toggle" type="  button" id="dropdownMenuButtonTransparent" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <%= current_user.email %></button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <%= link_to "List a charger station", new_station_path, class: "dropdown-item" %>

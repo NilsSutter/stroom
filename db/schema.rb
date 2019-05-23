@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2019_05_22_171540) do
     t.bigint "station_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "content"
+    t.text "content", default: ""
     t.index ["booking_id"], name: "index_reviews_on_booking_id"
     t.index ["station_id"], name: "index_reviews_on_station_id"
   end

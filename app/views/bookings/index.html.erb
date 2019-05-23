@@ -1,0 +1,27 @@
+<div class="container">
+  <h1>My Stations</h1>
+  <ul>
+    <% @stations.each do |item| %>
+      <li>
+        <%= item.charger %> charger at
+        <em><%= item.address %></em>
+        <br>
+        <%= link_to "Edit Station", edit_station_path(item) %>
+      </li>
+    <% end %>
+  </ul>
+  <h1>My Upcoming Bookings:</h1>
+  <ul>
+    <% @bookings.each do |item| %>
+      <li>
+        <%= item.station.charger %> charger at
+        <em><%= item.station.address %></em> on
+        <%= item.start %> until <%= item.end %>
+        <br>
+        Estimated cost: €<%= ((item.end - item.start)/60) * item.station.price %>
+        <br>
+        <%= link_to "Cancel Booking", booking_path(item), method: :delete %>
+      </li>
+    <% end %>
+  </ul>
+</div>
