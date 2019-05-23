@@ -1,14 +1,14 @@
 class BookingsController < ApplicationController
 
   def create
-    @booking = Booking.new(params_create_booking)
+    @new_booking = Booking.new(params_create_booking)
     @station = Station.find(params[:station_id])
-    @booking.user = current_user
-    @booking.station = @station
+    @new_booking.user = current_user
+    @new_booking.station = @station
 
-    authorize @booking
+    authorize @new_booking
 
-    if @booking.save
+    if @new_booking.save
       flash[:alert] = "Booking Created!"
       redirect_to station_path(@station)
     else

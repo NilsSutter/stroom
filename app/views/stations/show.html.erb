@@ -28,7 +28,7 @@
             <span>Overall: </span>
             <!-- star rating overall -->
               <span>
-                <% unless @overall_avg.zero? %>
+                <% unless @overall_avg == 0 %>
                   <% @overall_avg.times do %>
                     <span>
                       <i class="fas fa-star"></i>
@@ -38,7 +38,7 @@
               </span>
               <!-- empty stars -->
               <span>
-                <% unless @overall_avg.zero? %>
+                <% unless @overall_avg == 0 %>
                   <% (5-@overall_avg).times do %>
                     <span>
                       <i class="far fa-star"></i>
@@ -51,7 +51,7 @@
             <!-- star rating accessability -->
             <p>Accessability: </p>
               <span>
-                <% unless @accessability_avg != 0 %>
+                <% unless @accessability_avg == 0 %>
                   <% @accessability_avg.times do %>
                     <span>
                       <i class="fas fa-star"></i>
@@ -61,7 +61,7 @@
               </span>
               <!-- empty stars -->
               <span>
-                <% unless @accessability_avg.zero? %>
+                <% unless @accessability_avg == 0 %>
                   <% (5-@accessability_avg).times do %>
                     <span>
                       <i class="far fa-star"></i>
@@ -72,7 +72,7 @@
               <!-- star rating condition -->
             <p>Condition:</p>
               <span>
-                <% unless @condition_avg.zero? %>
+                <% unless @condition_avg == 0 %>
                   <% @condition_avg.times do %>
                     <span>
                       <i class="fas fa-star"></i>
@@ -82,7 +82,7 @@
               </span>
               <!-- empty stars -->
               <span>
-                <% unless @condition_avg.zero? %>
+                <% unless @condition_avg == 0 %>
                   <% (5-@condition_avg).times do %>
                     <span>
                       <i class="far fa-star"></i>
@@ -105,13 +105,7 @@
         </div>
         <!-- Simple form for creating a new review -->
         <%if @booking %>
-          <%= simple_form_for([@booking, @review]) do |f| %>
-          <%= f.input :accessability, as: :radio_buttons, collection: [1, 2, 3, 4, 5], wrapper: :vertical_collection_inline %>
-          <%= f.input :condition, as: :radio_buttons, collection: [1, 2, 3, 4, 5], wrapper: :vertical_collection_inline %>
-          <%= f.input :overall, as: :radio_buttons, collection: [1, 2, 3, 4, 5], wrapper: :vertical_collection_inline %>
-          <%= f.input :content, label: "Comment?" %>
-          <%= f.button :submit, class: "btn btn-primary" %>
-          <% end %>
+          <%= render 'reviews/reviewform' %>
         <% end %>
       </div>
       <!-- displaying the individual map -->
