@@ -1,4 +1,15 @@
 <div class="container">
+  <h1>My Stations</h1>
+  <ul>
+    <% @stations.each do |item| %>
+      <li>
+        <%= item.charger %> charger at
+        <em><%= item.address %></em>
+        <br>
+        <%= link_to "Edit Station", edit_station_path(item) %>
+      </li>
+    <% end %>
+  </ul>
   <h1>My Upcoming Bookings:</h1>
   <ul>
     <% @bookings.each do |item| %>
