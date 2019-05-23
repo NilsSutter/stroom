@@ -1,7 +1,7 @@
 class StationsController < ApplicationController
   before_action :find_station, only: [:show]
+  skip_before_action :authenticate_user!, only: [:home, :index, :show]
   before_action :no_user_auth_needed, only: [:home, :index, :show]
-  skip_before_action :authenticate_user!, only: [:home, :index, :show, :delete_photo]
 
   def home
     @disable_nav = true
@@ -49,8 +49,8 @@ class StationsController < ApplicationController
     @booking = @station.bookings.last
     @station_reviews = @station.reviews
 
-
     # compute averages PUT IN MODEL?
+
     unless @station.reviews.empty?
       @overall_avg = compute_overall_avg.round
       @accessability_avg = compute_accessibility.round
@@ -60,12 +60,12 @@ class StationsController < ApplicationController
       @accessability_avg = 0
       @condition_avg = 0
     end
+
     @marker =
       [{
         lat: @station.latitude,
         lng: @station.longitude
       }]
-      #test
   end
 
   def new
@@ -79,10 +79,20 @@ class StationsController < ApplicationController
     # @user = current_user
     @station.user = current_user
     if @station.save
+      current_user.owner = true
       redirect_to station_path(@station)
     else
       render :new
     end
+  end
+
+  def edit
+  end
+
+  def update
+  end
+
+  def destroy
   end
 
   def delete_photo

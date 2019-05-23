@@ -6,7 +6,7 @@ class BookingPolicy < ApplicationPolicy
   end
 
   def create?
-    new?
+    record.station.user != user
   end
 
   def new?
