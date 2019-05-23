@@ -5,20 +5,17 @@ class ReviewPolicy < ApplicationPolicy
     end
   end
 
-    def create?
-      new?
-    end
+  def create?
+    # ???? how to compare current station the station the user is on????
+    true
+    # user.bookings.each do |booking|
+    #   raise
+    #   booking.station_id == record.id && booking.confirmed ? true : false
+    # end
 
-    def new?
-      true
-      # ???? how to compare current station the user is on????
+  end
 
-      # validation_arr = []
-      # user.bookings.each do |booking|
-      #   if booking.station_id == record.id && booking.confirmed
-      #     validation_arr << booking
-      #   end
-      # end
-      # validation_arr.size.positive?
-    end
+  def new?
+    true
+  end
 end

@@ -1,6 +1,6 @@
 class StationsController < ApplicationController
   before_action :find_station, only: [:show]
-  skip_before_action :authenticate_user!, only: [:home, :index, :show, :delete_photo]
+  skip_before_action :authenticate_user!, only: [:home, :index, :show]
   before_action :no_user_auth_needed, only: [:home, :index, :show]
 
   def home
@@ -45,12 +45,11 @@ class StationsController < ApplicationController
   def show
     @station = Station.find(params[:id])
     @review = Review.new
-    # authorize @review
     @booking = @station.bookings.last
     @new_booking = Booking.new
     @station_reviews = @station.reviews
-    # compute averages
 
+    # compute averages
     unless @station.reviews.empty?
       @overall_avg = compute_overall_avg.round
       @accessability_avg = compute_accessibility.round
@@ -81,11 +80,12 @@ class StationsController < ApplicationController
   end
 
   def edit
-    # @station = Station.find(params[:id])
-    # authorize @station
   end
 
   def update
+  end
+
+  def destroy
   end
 
   def delete_photo

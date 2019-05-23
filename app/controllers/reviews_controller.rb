@@ -8,6 +8,7 @@ class ReviewsController < ApplicationController
     @station = @booking.station
     # tell review instance to which booking instance it belongs to
     @review.booking = @booking
+
     # check if the review was created
     if @review.save!
       # if yes, redirect to detail-page
