@@ -96,9 +96,11 @@
         <div class="rating-content">
           <!-- Display Reviews -->
           <% @station.reviews.each do |review| %>
-            <div class="review-content-box">
-              <p><%= review.content %></p>
-            </div>
+            <% unless review.content.empty? %>
+              <div class="review-content-box">
+                <p><%= review.content %></p>
+              </div>
+            <% end %>
           <% end %>
         </div>
         <!-- Simple form for creating a new review -->
@@ -107,7 +109,7 @@
           <%= f.input :accessability, as: :radio_buttons, collection: [1, 2, 3, 4, 5], wrapper: :vertical_collection_inline %>
           <%= f.input :condition, as: :radio_buttons, collection: [1, 2, 3, 4, 5], wrapper: :vertical_collection_inline %>
           <%= f.input :overall, as: :radio_buttons, collection: [1, 2, 3, 4, 5], wrapper: :vertical_collection_inline %>
-          <%= f.input :content %>
+          <%= f.input :content, label: "Comment?" %>
           <%= f.button :submit, class: "btn btn-primary" %>
           <% end %>
         <% end %>
@@ -133,9 +135,7 @@
               <p>book now to get the best available rate</p>
             </div>
             <div class="booking-form-form">
-              <%# if @new_booking %>
-                <%= render 'bookings/booking_form' %>
-              <%# end %>
+              <%= render 'bookings/booking_form' %>
             </div>
       </div>
     </div>
