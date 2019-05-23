@@ -9,16 +9,13 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <%= link_to "create station", new_station_path, class: "nav-link" %>
-      </li>
       <!-- testing in navbar search -->
-      <li class="nav-item active">
+      <li class="nav-item active navbar-search">
         <form class="form-inline my-2 my-lg-0">
           <%= simple_form_for :search, url: stations_path, method: "GET", html: { class: 'form' } do |f| %>
           <%= f.input :address,
             input_html: {value: ""},
-            wrapper_html: { class: 'login-input-text' },
+            wrapper_html: { class: 'login-input-text navbar-search-field' },
             placeholder: "location",
             label:false,
             required: false %>
@@ -29,6 +26,9 @@
         </form>
       </li>
       <!-- check if user is not signed in and display Sign up/Sign in if thats the case -->
+      <li class="nav-item active navbar-create-btn">
+        <%= link_to "List Your Station", new_station_path, class: "nav-link" %>
+      </li>
       <% unless user_signed_in? %>
         <li class="nav-item">
           <%= link_to "Sign up", new_user_registration_path, class: "nav-link" %>
