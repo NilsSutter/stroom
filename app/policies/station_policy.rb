@@ -6,11 +6,11 @@ class StationPolicy < ApplicationPolicy
   end
 
   def create?
-    new?
+    true
   end
 
   def new?
-    true 
+    true
   end
 
   def update?
