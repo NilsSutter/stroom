@@ -103,6 +103,10 @@ class StationsController < ApplicationController
   end
 
   def destroy
+    @station = Station.find(params[:id])
+    authorize @station
+    @station.delete
+    redirect_to bookings_path
   end
 
   def delete_photo
@@ -125,6 +129,6 @@ class StationsController < ApplicationController
   end
 
   def params_station
-    params.require(:station).permit(:address, :charger, :photo)
+    params.require(:station).permit(:address, :charger, :photo, :instruction, :price)
   end
 end
