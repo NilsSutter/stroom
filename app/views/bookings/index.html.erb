@@ -1,6 +1,6 @@
 <!-- START station cards -->
 <div class="container mt-3">
-  <h1>My Stations</h1>
+  <h1><%="My Stations" if @stations.size.positive?%></h1>
   <% @stations.each do |item| %>
     <div class="blog-card alt">
       <div class="meta">
@@ -11,7 +11,7 @@
             <li><strong><%=item.charger.upcase%></strong> Charger</li>
             <% if !item.price.nil? %>
               <ul>
-                <li>€<%=item.price%></li>
+                <li>€<%=item.price%> "per hour"</li>
               </ul>
             <% else %>
               <ul>
@@ -37,6 +37,7 @@
 
 <!-- START upcoming booking cards -->
 <h1 class="mt-5">My Upcoming Bookings:</h1>
+<h3><%= "No upcoming bookings." unless @bookings.size.positive? %></h3>
 <% @bookings.each do |item| %>
   <div class="blog-card my-3">
     <div class="meta">
@@ -52,7 +53,7 @@
           <ul>
             <li class="tags">
               <% if item.station.price != nil %>
-                <strong>€<%= ((item.end - item.start)/60) * item.station.price %></strong>
+                <strong>€<%= ((item.end - item.start)/6000) * item.station.price %></strong>
               <% end %>
             </li>
           </ul>
