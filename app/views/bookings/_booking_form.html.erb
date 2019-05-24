@@ -12,7 +12,7 @@
     input_html: {id: "range_end"},
     wrapper_html: { class: 'search-input-field' } %>
   <% unless @station.user_id == current_user.id %>
-      <%= f.button :submit, class: "btn btn-primary w-100" %>
+      <%= f.button :submit, class: "booking-create-btn w-100" %>
     <% end %>
 <% end %>
 
