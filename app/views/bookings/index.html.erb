@@ -1,26 +1,60 @@
-<div class="container">
-  <div>
-    <h1>My Stations</h1>
-    <ul>
-      <% @stations.each do |item| %>
-        <li>
-          <%= item.charger %> charger at
-          <em><%= item.address %></em>
-          <br>
-          <%= link_to "Edit Station", edit_station_path(item) %>
-        </li>
-      <% end %>
-    </ul>
-  </div>
+<!-- START station cards -->
+<div class="container mt-3">
+  <h1>My Stations</h1>
+  <% @stations.each do |item| %>
+    <div class="blog-card alt">
+      <div class="meta">
+      <div class="photo"> <%= cl_image_tag item.photo %> </div>
+      <ul class="details">
+        <li class="tags">
+          <ul>
+            <li><strong><%=item.charger.upcase%></strong> Charger</li>
+            <% if !item.price.nil? %>
+              <ul>
+                <li>€<%=item.price%></li>
+              </ul>
+            <% else %>
+              <ul>
+                <li>€0</li>
+              </ul>
+            <% end %>
+            </li>
+          </ul>
+      </div>
+      <div class="description">
+        <h1><%= item.address %></h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad eum dolorum architecto obcaecati enim dicta praesentium, quam nobis! Neque ad aliquam facilis numquam. Veritatis, sit.</p>
+        <p class="read-more">
+          <%= link_to "Edit Station", edit_station_path(item), class: "mr-3" %>
+          <%= link_to 'Destroy Station', [item],
+               method: :delete,
+               data: { confirm: 'Are you sure?' } %>
+        </p>
+      </div>
+    </div>
+  <% end %>
+<!-- END station cards -->
 
-<!-- Upcoming bookings -->
-<h1>My Upcoming Bookings:</h1>
+<!-- START upcoming booking cards -->
+<h1 class="mt-5">My Upcoming Bookings:</h1>
 <% @bookings.each do |item| %>
-  <div class="blog-card">
+  <div class="blog-card my-3">
     <div class="meta">
       <div class="photo"> <%= cl_image_tag item.station.photo %>
         </div>
       <ul class="details">
+        <li class="tags">
+          <ul>
+            <li>
+              <strong><%= item.station.charger.upcase %></strong> charger
+            </li>
+          </ul>
+          <ul>
+            <li class="tags">
+            <strong>€<%= ((item.end - item.start)/60) * item.station.price %></strong>
+            </li>
+          </ul>
+        </li>
         <li class="date">
           <% if item.start.strftime("%d. %b") == item.end.strftime("%d. %b") %>
             <%= item.start.strftime("%d. %b, %H:%M%p ") %> - <%= item.end.strftime("%H:%M%p ") %>
@@ -28,19 +62,17 @@
             <%= item.start.strftime("%d. %b, %H:%M%p ") %> - <%= item.end.strftime("%d. %b, %H:%M%p ") %>
           <% end %>
         </li>
-        <li class="tags">
-          <ul>
-            <li>
-              <strong><%= item.station.charger.upcase %></strong> charger in <em><%= item.station.address.split[3] %></em>
-            </li>
-          </ul>
-        </li>
       </ul>
     </div>
     <div class="description">
-      <h1>Learning to Code</h1>
-      <h2>Opening a door to the future</h2>
+      <h1><%= item.station.address %></h1>
+      <!-- !!!!!! include review overall -->
+      <h2><% %></h2>
       <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad eum dolorum architecto obcaecati enim dicta praesentium, quam nobis! Neque ad aliquam facilis numquam. Veritatis, sit.</p>
+      <p class="read-more">
+        <strong>€<%= ((item.end - item.start)/60) * item.station.price %></strong>
+          <%= link_to "Cancel Booking", booking_path(item), method: :delete, class:"ml-4" %>
+      </p>
       <!-- adding guard clause because code keeps breaking -->
         <p class="read-more">
           <a href="#">Read More</a>
@@ -51,4 +83,5 @@
         </p>
     </div>
   </div>
-  <% end %>
+<% end %>
+<!-- END -->

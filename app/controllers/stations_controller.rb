@@ -130,12 +130,13 @@ class StationsController < ApplicationController
 
   # Methods for review computations
   def compute_overall_avg
-    overall = []
-    @station_reviews.each do |review|
-      overall << review.overall
-    end
-    overall_sum = overall.reduce(0) { |sum, num| sum + num }
-    overall_sum.to_f / overall.count
+    # overall = []
+    # @station_reviews.each do |review|
+    #   overall << review.overall
+    # end
+    # overall_sum = overall.reduce(0) { |sum, num| sum + num }
+    (compute_accessibility + compute_condition) / 2
+    # overall_sum.to_f / overall.count
   end
 
   def compute_accessibility
