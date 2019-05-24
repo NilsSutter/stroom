@@ -1,5 +1,5 @@
 class StationsController < ApplicationController
-  before_action :find_station, only: [:show]
+  before_action :find_station, only: [:show, :destroy]
   skip_before_action :authenticate_user!, only: [:home, :index, :show]
   before_action :no_user_auth_needed, only: [:home, :index, :show]
 
@@ -8,26 +8,31 @@ class StationsController < ApplicationController
   end
 
   def index
-    @search = params[:search]
-    @charger = @search["charger"]
-    @address = @search["address"]
-    @radius = @search["radius"].to_i
+    if params[:search].present?
+      @search = params[:search]
+      @charger = @search["charger"]
+      @address = @search["address"]
+      @radius = @search["radius"].to_i
 
-    if (@address.empty? || @address.nil?) && (@charger.nil? || @charger.empty?)
-      @stations = Station.all
 
-    elsif @address.nil? || @address.empty?
-      sql_query = " \ stations.charger @@ :charger"
-      @stations = Station.where(sql_query, charger: @charger)
+      if (@address.empty? || @address.nil?) && (@charger.nil? || @charger.empty?)
+        @stations = Station.all
 
-    elsif @charger.nil? || @charger.empty?
-      # sql_query = " \ stations.address @@ :address"
-      # @stations = Station.where(sql_query, address: @address)
-      @stations = Station.near(@address, @radius)
+      elsif @address.nil? || @address.empty?
+        sql_query = " \ stations.charger @@ :charger"
+        @stations = Station.where(sql_query, charger: @charger)
 
+      elsif @charger.nil? || @charger.empty?
+        # sql_query = " \ stations.address @@ :address"
+        # @stations = Station.where(sql_query, address: @address)
+        @stations = Station.near(@address, @radius)
+
+      else
+        sql_query = " \ stations.charger @@ :charger"
+        @stations = Station.near(@address, @radius).where(sql_query, charger: @charger)
+      end
     else
-      sql_query = " \ stations.charger @@ :charger"
-      @stations = Station.near(@address, @radius).where(sql_query, charger: @charger)
+      @stations = Station.all
     end
 
     # Mapbox Stuff
@@ -103,9 +108,7 @@ class StationsController < ApplicationController
   end
 
   def destroy
-    @station = Station.find(params[:id])
-    authorize @station
-    @station.delete
+    @station.destroy
     redirect_to bookings_path
   end
 
