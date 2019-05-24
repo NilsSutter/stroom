@@ -1,4 +1,9 @@
 <div class="container">
+  <div>
+    <%= link_to stations_path do  %>
+      <%=  image_tag("left-arrow.svg", class: "back-button")%>
+    <% end %>
+  </div>
   <div class="wrapper-detail-page"> <!-- flex-box for left and right side of content -->
     <div class="main-content-wrapper"> <!-- wrapper for left side of page -->
       <% unless @station.photo != nil %>
@@ -128,7 +133,7 @@
       <!-- upcoming bookings -->
       <div class="upcoming-bookings" style="z-index:100">
         <ul class="list-group list-group-flush">
-          <h4 style="font-family: Josefin sans, sans-serif; font-weight: bold; text-align: center; margin-top: 55px;" >Upcoming bookings</h4>
+          <h4 style="font-family: Josefin sans, sans-serif; font-weight: bold; text-align: center; margin-top: 55px;" >Upcoming bookings:</h4>
             <% @station.bookings.each do |booking| %>
               <li class="list-group-item">
                 <!-- if booking same date display only hour? -->
