@@ -52,7 +52,7 @@
           <ul>
             <li class="tags">
               <% if item.station.price != nil %>
-                <strong>€<%= ((item.end - item.start)/60) * item.station.price %></strong>
+                <strong>€<%= (((item.end - item.start)/60) * item.station.price).round %></strong>
               <% end %>
             </li>
           </ul>
