@@ -5,6 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'open-uri'
+
 puts "Deleting all Reviews, Bookings, Stations, and Users!"
 Review.delete_all
 Booking.delete_all
@@ -21,14 +23,9 @@ User.create!(email: 'Fuzz@theWorks.de', password: 'topsecret', password_confirma
 User.create!(email: 'NachoLover237@mail.dk', password: 'topsecret', password_confirmation: 'topsecret', first_name: "Nicolas", last_name: "Hammer")
 User.create!(email: 'admin@cn.com', password: 'admin!!', password_confirmation: 'admin!!', admin: true, first_name: "Admin", last_name: "Admin")
 
-# Create 3 Stations
+# Create 60 Stations
 puts "Creating Stations..."
-uid_a = User.all.first.id
-uid_b = User.all.second.id
-uid_c = User.all.third.id
-uid_d = User.all.fourth.id
 
-puts "Creating instructions"
 instruction_array = [
 "The garage is located at a beautiful spot near our lovely house. You can access the car plug easily. In case you have any questions
 you can contact us anytime. We would love to hear from you.",
@@ -38,58 +35,49 @@ Go ahead and charge your car.",
 "This garage is the best garage we have the offer. It is truely magnificent. Rich stayed here once and loved it. Feel free to come. Bring your friends.",
 "While charging your car, feel free to enjoy a beer at our pub nearby. We will be very happy to welcome you!"
 ]
-puts "fetching sample images"
-url_a = "https://images.unsplash.com/photo-1523828342112-3deb811c3451?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1600&q=80"
-url_b = "https://images.unsplash.com/photo-1472377521129-f4ddafa8b372?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80"
-url_c = "https://images.unsplash.com/photo-1439158741799-12ded9a3ba30?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1721&q=80"
-url_d = "https://images.unsplash.com/photo-1517490232338-06b912a786b5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1502&q=80"
-url_e = "https://images.unsplash.com/photo-1505545121909-2d48e22dede6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
-url_f = "https://images.unsplash.com/photo-1489847737011-2f9e5f5aa2e1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
-url_g = "https://images.unsplash.com/photo-1547138666-943b08b83c0b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
-url_h = "https://images.unsplash.com/photo-1494351416886-f6b4ed2a1d68?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
-url_i = "https://images.unsplash.com/photo-1445548671936-e1ff8a6a6b20?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
 
-station_a = Station.new(address: "Wendenweg 6, 13595 Berlin, Germany", charger: "bmw", user_id: uid_a, price: 0.4, instruction: instruction_array[rand(0..4)])
-station_b = Station.new(address: "Klingenhofer Steig 11A, 13587 Berlin, Germany", charger: "tesla", user_id: uid_b, price: 0.5, instruction: instruction_array[rand(0..4)])
-station_c = Station.new(address: "Innungswall 8, 38518 Gifhorn, Germany", charger: "volvo", user_id: uid_c, price: 1.2, instruction: instruction_array[rand(0..4)])
-station_d = Station.new(address: "Graefestraße 76, 10967 Berlin, Germany", charger: "mercedes", user_id: uid_a, price: 1.1, instruction: instruction_array[rand(0..4)])
-station_e = Station.new(address: "Brennerstraße 12, 13187 Berlin, Germany", charger: "mercedes", user_id: uid_a, price: 0.9, instruction: instruction_array[rand(0..4)])
-station_f = Station.new(address: "Kurfürstenstraße 187, 10785 Berlin, Germany", charger: "bmw", user_id: uid_d, price: 1.4, instruction: instruction_array[rand(0..4)])
-station_g = Station.new(address: "Rudi-Arndt-Straße 43, 10407 Berlin, Germany", charger: "mercedes", user_id: uid_a, price: 0.6, instruction: instruction_array[rand(0..4)])
-station_h = Station.new(address: "Horst-Kohl-Straße 4, 12157 Berlin, Germany", charger: "bmw", user_id: uid_c, price: 0.8, instruction: instruction_array[rand(0..4)])
-station_i = Station.new(address: "Unter den Linden 5, 10117 Berlin, Germany", charger: "bmw", user_id: uid_d, price: 0.5, instruction: instruction_array[rand(0..4)])
+# url_a = "https://images.unsplash.com/photo-1523828342112-3deb811c3451?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1600&q=80"
+# url_b = "https://images.unsplash.com/photo-1472377521129-f4ddafa8b372?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80"
+# url_c = "https://images.unsplash.com/photo-1439158741799-12ded9a3ba30?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1721&q=80"
+# url_d = "https://images.unsplash.com/photo-1517490232338-06b912a786b5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1502&q=80"
+# url_e = "https://images.unsplash.com/photo-1505545121909-2d48e22dede6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
+# url_f = "https://images.unsplash.com/photo-1489847737011-2f9e5f5aa2e1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
+# url_g = "https://images.unsplash.com/photo-1547138666-943b08b83c0b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
+# url_h = "https://images.unsplash.com/photo-1494351416886-f6b4ed2a1d68?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
+# url_i = "https://images.unsplash.com/photo-1445548671936-e1ff8a6a6b20?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
 
-station_a.remote_photo_url = url_a
-station_b.remote_photo_url = url_b
-station_c.remote_photo_url = url_c
-station_d.remote_photo_url = url_d
-station_e.remote_photo_url = url_e
-station_f.remote_photo_url = url_f
-station_g.remote_photo_url = url_g
-station_h.remote_photo_url = url_h
-station_i.remote_photo_url = url_i
+chargers = ["tesla", "mercedes", "bmw", "volkswagen", "volvo", "ford"]
+place_types = ["gym", "cafe", "church"]
 
-station_a.save!
-station_b.save!
-station_c.save!
-station_d.save!
-station_e.save!
-station_f.save!
-station_g.save!
-station_h.save!
-station_i.save!
+place_types.each do |type|
+  gm_return = JSON.parse(open("https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=#{ENV['GOOGLE_MAPS_KEY']}&location=52.52,13.4050&radius=10000&type=#{type}").read)
+
+  gm_return["results"].each do |location|
+    puts "> Creating Station at #{location['vicinity']}"
+    s = Station.new(address: location["vicinity"], charger: chargers[rand(0..5)], user_id: User.all[rand(0..(User.all.count - 1))].id, price: (rand(1..9)/10), instruction: instruction_array[rand(0..4)])
+
+    image_check_metadata = JSON.parse(open("https://maps.googleapis.com/maps/api/streetview/metadata?location=#{location['geometry']['location']['lat']},#{location['geometry']['location']['lng']}&key=#{ENV['GOOGLE_MAPS_KEY']}").read)
+
+    if image_check_metadata["status"] == "ZERO_RESULTS"
+      s.remote_photo_url = "https://images.unsplash.com/photo-1523828342112-3deb811c3451?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1600&q=80"
+    else
+      s.remote_photo_url = "https://maps.googleapis.com/maps/api/streetview?location=#{location['geometry']['location']['lat']},#{location['geometry']['location']['lng']}&key=#{ENV['GOOGLE_MAPS_KEY']}&size=1024x1024"
+    end
+
+    s.save!
+
+    time = Time.now + (86400 * (s.id + 1))
+    1.times do
+      puts "Creating Booking...#{s.id}"
+      Booking.create!(user_id: User.all.first.id, station_id: s.id, confirmed: false, start: time, end: time + (s.id * 10))
+      Booking.create!(user_id: User.all.second.id, station_id: s.id, confirmed: false, start: time + 10000, end: time + 10000 + (s.id * 10))
+      Booking.create!(user_id: User.all.third.id, station_id: s.id, confirmed: false, start: time + 30000, end: time + 30000 + (s.id * 10))
+    end
+  end
+end
 
 
-# Create 4 Bookings
-puts "Creating Bookings..."
-sid_a = Station.all.first.id
-sid_b = Station.all.second.id
-sid_c = Station.all.third.id
 
-Booking.create!(user_id: uid_a, station_id: sid_a, confirmed: false, start: "2019-02-27 13:22:00", end: "2019-02-27 15:47:00")
-Booking.create!(user_id: uid_a, station_id: sid_b, confirmed: true, start: "2019-02-25 16:32:00", end: "2019-02-25 18:22:00")
-Booking.create!(user_id: uid_b, station_id: sid_c, confirmed: false, start: "2019-02-22 10:04:00", end: "2019-02-22 11:40:00")
-Booking.create!(user_id: uid_c, station_id: sid_c, confirmed: true, start: "2019-03-21 21:22:00", end: "2019-03-22 08:01:00")
 
 # Create a review for each booking
 content_array = [
@@ -103,6 +91,6 @@ content_array = [
 puts "Creating Reviews..."
 Booking.all.each do |each|
   xxx = Review.new(accessability: rand(0..5), condition: rand(0..5), overall: rand(0..5), booking_id: each.id, content: content_array[rand(0..3)])
-  xxx.station = station_a
-  xxx.save
+  xxx.station = Station.all[rand(0..(Station.all.count - 1))]
+  xxx.save!
 end
