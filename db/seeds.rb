@@ -94,3 +94,5 @@ Booking.all.each do |each|
   xxx.station = Station.all[rand(0..(Station.all.count - 1))]
   xxx.save!
 end
+
+Station.where(address: "Bezirk Mitte").first.destroy
