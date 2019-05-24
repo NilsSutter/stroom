@@ -23,7 +23,7 @@
       </div>
       <div class="description">
         <h1><%= item.address %></h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad eum dolorum architecto obcaecati enim dicta praesentium, quam nobis! Neque ad aliquam facilis numquam. Veritatis, sit.</p>
+        <p><%= item.instruction %></p>
         <p class="read-more">
           <%= link_to "Edit Station", edit_station_path(item), class: "mr-3" %>
           <%= link_to 'Destroy Station', [item],
@@ -51,7 +51,9 @@
           </ul>
           <ul>
             <li class="tags">
-            <strong>€<%= ((item.end - item.start)/60) * item.station.price %></strong>
+              <% if item.station.price != nil %>
+                <strong>€<%= ((item.end - item.start)/60) * item.station.price %></strong>
+              <% end %>
             </li>
           </ul>
         </li>
@@ -66,20 +68,26 @@
     </div>
     <div class="description">
       <h1><%= item.station.address %></h1>
-      <!-- !!!!!! include review overall -->
-      <h2><% %></h2>
-      <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad eum dolorum architecto obcaecati enim dicta praesentium, quam nobis! Neque ad aliquam facilis numquam. Veritatis, sit.</p>
+      <!-- Rating -->
+      <!-- full stars -->
+      <% unless item.station.compute_overall_avg.round == 0 || item.station.compute_overall_avg.round.nil? %>
+        <% item.station.compute_overall_avg.round.times do %>
+          <span>
+            <i class="fas fa-star"></i>
+          </span>
+        <% end %>
+      <% end %>
+      <!-- Empty stars -->
+      <% unless item.station.compute_overall_avg.round == 0 || item.station.compute_overall_avg.round.nil? %>
+        <% (5-item.station.compute_overall_avg.round).times do %>
+          <span>
+            <i class="far fa-star"></i>
+          </span>
+        <% end %>
+      <% end %>
+     <p> <%= item.station.instruction%> </p>
       <p class="read-more">
-        <strong>€<%= ((item.end - item.start)/60) * item.station.price %></strong>
-          <%= link_to "Cancel Booking", booking_path(item), method: :delete, class:"ml-4" %>
-      </p>
-      <!-- adding guard clause because code keeps breaking -->
-        <p class="read-more">
-          <a href="#">Read More</a>
-          <% if item.station.price != nil %>
-            <strong>€<%= ((item.end - item.start)/60) * item.station.price %></strong>
-          <% end %>
-            <%= link_to "Cancel Booking", booking_path(item), method: :delete, class:"display-right" %>
+            <%= link_to "Cancel Booking", booking_path(item), method: :delete, class:"mt-4" %>
         </p>
     </div>
   </div>
