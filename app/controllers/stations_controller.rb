@@ -36,13 +36,13 @@ class StationsController < ApplicationController
     end
 
     # Mapbox Stuff
-    # @stations = Station.where.not(latitude: nil, longitude: nil)
+    @stations_for_markers = Station.where.not(latitude: nil, longitude: nil)
 
-    @markers = @stations.map do |station|
+    @markers = @stations_for_markers.map do |station|
       {
         lat: station.latitude,
         lng: station.longitude,
-        marker_image_url: helpers.asset_url('maps-and-flags')
+        infoWindow: render_to_string(partial: "partials/infowindow", locals: { station: station })
       }
     end
   end

@@ -1,4 +1,9 @@
 <div class="container">
+  <div>
+    <%= link_to stations_path do  %>
+      <%=  image_tag("left-arrow.svg", class: "back-button")%>
+    <% end %>
+  </div>
   <div class="wrapper-detail-page"> <!-- flex-box for left and right side of content -->
     <div class="main-content-wrapper"> <!-- wrapper for left side of page -->
       <% unless @station.photo != nil %>
@@ -15,7 +20,7 @@
             <div class="avg-rating">
               <div class="rating-header">
                 <div class="rating-header-overall">
-                  <h2> <%= @station.reviews.count %> Reviews</h2>
+                  <h2> <%= pluralize @station.reviews.size, "Review" %></h2>
                   <span>Overall: </span>
                   <!-- star rating overall -->
                     <span>
@@ -115,7 +120,7 @@
               <h2 class="pb-3">Create a Booking</h2>
             </div>
             <div id="price-create-booking">
-              <p><b>$ <%= @station.price %> </b></p><p id="price-per-hour">per hour</p>
+              <p><b>€ <%= @station.price %> </b></p><p id="price-per-hour">per hour</p>
             </div>
             <div id="booking-info-message">
               <p>book now to get the best available rate</p>
@@ -128,7 +133,7 @@
       <!-- upcoming bookings -->
       <div class="upcoming-bookings" style="z-index:100">
         <ul class="list-group list-group-flush">
-          <h4 style="font-family: Josefin sans, sans-serif; font-weight: bold; text-align: center; margin-top: 55px;" >Upcoming bookings</h4>
+          <h4 style="font-family: Josefin sans, sans-serif; font-weight: bold; text-align: center; margin-top: 55px;" >Upcoming bookings:</h4>
             <% @station.bookings.each do |booking| %>
               <li class="list-group-item">
                 <!-- if booking same date display only hour? -->
@@ -142,7 +147,7 @@
     </div>
     <!-- <div class="map-location-info"> -->
       <h2 style="margin-top: 20px; margin-bottom: 5px;">The location</h2>
-      <p>This charging spot is located at <strong><%= @station.address %></strong>. The map displays it exact lcoation. </p>
+      <p>This charging spot is located at <strong><%= @station.address %></strong>. </p>
       <div class ="detail-map" style= "margin-bottom: 30px; "id="map" data-markers="<%= @marker.to_json %>"
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>

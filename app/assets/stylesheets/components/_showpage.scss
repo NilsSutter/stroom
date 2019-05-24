@@ -78,7 +78,7 @@
 }
 
 .main-content-wrapper {
-  margin-right: 75px;
+  margin-right: 50px;
 }
 
 .wrapper-detail-page {
@@ -104,38 +104,14 @@
 }
 
 
-
-
-
-
-
-
-
-
-// .outer-image-div {
-//   height: 300px;
-//   width: 600px;
-//   overflow: hidden;
-// }
-
-// .inner-image-div {
-//   height: 100%;
-//      width: 100%;
-//      background-size: cover;
-//      background-position: center;
-//      transition: all 0.5s ease;
-// }
-
-// .inner-image-div:hover {
-//   transform: scale(1.2);
-// }
-
 .flex-box-input-review {
   display: flex;
   justify-content: space-between;
 }
 
-
+.main-content-wrapper > img {
+  border-radius: 5px;
+}
 
 
 

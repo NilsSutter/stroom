@@ -10,6 +10,7 @@
             <%= f.input :address, wrapper_html: { class: 'login-input-text' }, placeholder: "enter location"%>
             <%= f.input :price, wrapper_html: { class: 'login-input-text' }, placeholder: "price in $" %>
             <%= f.input :charger, wrapper_html: { class: 'login-input-text' }, collection: ["tesla", "mercedes", "bmw", "volkswagen", "volvo", "ford"] %>
+            <%= f.input :instruction, wrapper_html: { class: 'login-input-text' }, placeholder: "How can it be used?" %>
             <%= f.input :photo, wrapper_html: { class: 'login-input-text' } %>
             <%= f.input :photo_cache, as: :hidden %>
             <%= f.submit "Save Changes", class: "btn btn-primary w-100" %>
