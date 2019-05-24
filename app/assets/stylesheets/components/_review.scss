@@ -1,5 +1,5 @@
 .review-overall-styling {
-  width: 500px;
+  width: 100%;
   margin: 0;
   p {
     margin: 0;
@@ -9,22 +9,47 @@
 
 .avg-rating {
   margin: 0;
-  border-bottom: 1px solid lightgrey;
   padding: 20px 0;
   h3 {
     display: inline;
     margin-right: 10px;
   }
+  padding-bottom: 0 !important;
 }
 
 .rating-header {
-  border-bottom: 1px solid lightgrey;
+  border-bottom: 0.5px solid lightgrey;
   padding: 20px 0;
   margin: 20px 0;
+  margin-top: 0 !important;
+  border-top: 0.5px solid lightgrey;
+  margin-bottom: 0 !important;
+  display: flex;
 }
 
 .review-content-box {
-  border-bottom: 1px solid lightgrey;
+  border-bottom: 0.5px solid lightgrey;
   padding: 20px 0;
   margin: 0;
+}
+
+.rating-criteria-detail {
+  margin-left: 80px;
+  color: grey;
+}
+
+
+.hide-review-input-field {
+  visibility: hidden;
+  height: 0px;
+}
+
+#review-form-div{
+  display: none;
+  transition: ease 1s;
+
+}
+
+#new_review {
+  width: 100%;
 }

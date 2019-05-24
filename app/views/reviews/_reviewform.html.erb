@@ -1,7 +1,8 @@
 <%= simple_form_for([@booking, @review]) do |f| %>
+<div class="flex-box-input-review">
   <%= f.input :accessability, as: :radio_buttons, collection: [1, 2, 3, 4, 5], wrapper: :vertical_collection_inline %>
   <%= f.input :condition, as: :radio_buttons, collection: [1, 2, 3, 4, 5], wrapper: :vertical_collection_inline %>
-  <%= f.input :overall, as: :radio_buttons, collection: [1, 2, 3, 4, 5], wrapper: :vertical_collection_inline %>
+</div>
   <%= f.input :content, label: "Comment?" %>
-  <%= f.button :submit, class: "btn btn-primary" %>
+  <%= f.button :submit, class: "btn btn-light w-100" %>
 <% end %>

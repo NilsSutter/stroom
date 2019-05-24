@@ -7,6 +7,8 @@ import { initMapbox } from '../plugins/init_mapbox';
 import { initAutocompleteCreate } from '../plugins/init_autocomplete';
 import { initAutocompleteLanding } from '../plugins/init_autocomplete';
 
+import '../components/_review.js';
+
 initMapbox();
 initAutocompleteCreate();
 initAutocompleteLanding();
