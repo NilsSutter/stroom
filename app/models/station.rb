@@ -17,4 +17,27 @@ class Station < ApplicationRecord
                   using: {
                   tsearch: { prefix: true } # <-- now `superman batm` will return something!
                   }
+
+   # Methods for review computations
+  def compute_overall_avg
+    (compute_accessibility + compute_condition) / 2
+  end
+
+  def compute_accessibility
+    accessibility = []
+    self.reviews.each do |review|
+      accessibility << review.accessability
+    end
+    accessibility_sum = accessibility.reduce(0) { |sum, num| sum + num }
+    accessibility_sum.to_f / accessibility.count
+  end
+
+  def compute_condition
+    condition = []
+    self.reviews.each do |review|
+      condition << review.condition
+    end
+    condition_sum = condition.reduce(0) { |sum, num| sum + num }
+    condition_sum.to_f / condition.count
+  end
 end
