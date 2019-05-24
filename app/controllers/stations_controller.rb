@@ -42,7 +42,6 @@ class StationsController < ApplicationController
       {
         lat: station.latitude,
         lng: station.longitude,
-        marker_image_url: helpers.asset_url('maps-and-flags'),
         infoWindow: render_to_string(partial: "partials/infowindow", locals: { station: station })
       }
     end
