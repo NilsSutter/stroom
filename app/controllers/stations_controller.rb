@@ -132,6 +132,6 @@ class StationsController < ApplicationController
   end
 
   def params_station
-    params.require(:station).permit(:address, :charger, :photo)
+    params.require(:station).permit(:address, :charger, :photo, :instruction, :price)
   end
 end
