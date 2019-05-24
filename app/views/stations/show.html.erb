@@ -1,147 +1,118 @@
 <div class="container">
-      <!-- img -->
-  <div class="row" style= "justify-content: space-around; margin-top: 32px;">
-    <div class="col-lg-8">
-      <div class="outer-image-div">
-        <div class="inner-image-div">
-          <% unless @station.photo != nil %>
-            <div style="width: 600px; height: 300px;"><p>no image uploaded</p>
-            </div>
-          <% else %>
-            <%= cl_image_tag @station.photo, height: 300, width: 500, crop: :fill %>
-            <%#= link_to 'delete photo', delete_photo_path(@station), class: "btn btn-primary" %>
-          <% end %>
-        </div>
-      </div>
-
-
+  <div class="wrapper-detail-page"> <!-- flex-box for left and right side of content -->
+    <div class="main-content-wrapper"> <!-- wrapper for left side of page -->
+      <% unless @station.photo != nil %>
+        <div style="width: 100%; height: 300px;"><p>no image uploaded</p></div>
+      <% else %>
+        <%= cl_image_tag @station.photo, height: 300, width: 730, crop: :fill %>
+      <% end %>
       <div class="description-content">
-        <h1><%= @station.address %></h1>
-        <p><%= @station.instruction %></p>
+        <h1 style="margin-top: 30px;"><%= @station.address %></h1>
+        <p style="margin-top: 12px;"><%= @station.instruction %></p>
       </div>
-
-      <!-- Reviews -->
-
-      <% if @reviews %>
-
-
-      <div class="review-overall-styling">
-        <div class="avg-rating">
-          <div class="rating-header">
-            <h3> <%= @station.reviews.count %> Reviews</h3>
-
-            <span>Overall: </span>
-            <!-- star rating overall -->
-              <span>
-
-                <% unless @overall_avg == 0 || @overall_avg.nil? %>
-
-                  <% @overall_avg.times do %>
+        <% if @reviews %>
+          <div class="review-overall-styling">
+            <div class="avg-rating">
+              <div class="rating-header">
+                <div class="rating-header-overall">
+                  <h2> <%= @station.reviews.count %> Reviews</h2>
+                  <span>Overall: </span>
+                  <!-- star rating overall -->
                     <span>
-                      <i class="fas fa-star"></i>
+                      <% unless @overall_avg == 0 || @overall_avg.nil? %>
+                        <% @overall_avg.times do %>
+                          <span>
+                            <i class="fas fa-star" style="font-size: 20px"></i>
+                          </span>
+                        <% end %>
+                      <% end %>
                     </span>
-                  <% end %>
-                <% end %>
-              </span>
-              <!-- empty stars -->
-              <span>
-                <% unless @overall_avg == 0 || @overall_avg.nil? %>
-                  <% (5-@overall_avg).times do %>
+                    <!-- empty stars -->
                     <span>
-                      <i class="far fa-star"></i>
+                      <% unless @overall_avg == 0 || @overall_avg.nil? %>
+                        <% (5-@overall_avg).times do %>
+                          <span>
+                            <i class="far fa-star" style="font-size: 20px"></i>
+                          </span>
+                        <% end %>
+                      <% end %>
                     </span>
-                  <% end %>
-                <% end %>
-              </span>
-          </div>
-          <div>
-            <!-- star rating accessability -->
-            <p>Accessability: </p>
-              <span>
-                <% unless @accessability_avg == 0 || @accessability_avg.nil? %>
-                  <% @accessability_avg.times do %>
-                    <span>
-                      <i class="fas fa-star"></i>
-                    </span>
-                  <% end %>
-                <% end %>
-              </span>
-              <!-- empty stars -->
-              <span>
-                <% unless @accessability_avg == 0 || @accessability_avg.nil? %>
-                  <% (5-@accessability_avg).times do %>
-                    <span>
-                      <i class="far fa-star"></i>
-                    </span>
-                  <% end %>
-                <% end %>
-              </span>
-              <!-- star rating condition -->
-            <p>Condition:</p>
-              <span>
-                <% unless @condition_avg == 0 || @condition_avg.nil?%>
-                  <% @condition_avg.times do %>
-                    <span>
-                      <i class="fas fa-star"></i>
-                    </span>
-                  <% end %>
-                <% end %>
-              </span>
-              <!-- empty stars -->
-              <span>
-                <% unless @condition_avg == 0 || @condition_avg.nil? %>
-                  <% (5-@condition_avg).times do %>
-                    <span>
-                      <i class="far fa-star"></i>
-                    </span>
-                  <% end %>
-                <% end %>
-              </span>
-          </div>
-        </div>
-
-        <div class="rating-content">
-          <!-- Display Reviews -->
-          <% @station.reviews.each do |review| %>
-            <% unless review.content.empty? %>
-              <div class="review-content-box">
-                <p><%= review.content %></p>
+                  </div>
+                  <div class="rating-criteria-detail">
+                    <p>Accessability: </p>
+                      <span>
+                        <% unless @accessability_avg == 0 || @accessability_avg.nil? %>
+                          <% @accessability_avg.times do %>
+                            <span>
+                              <i class="fas fa-star"></i>
+                            </span>
+                          <% end %>
+                        <% end %>
+                      </span>
+                      <!-- empty stars -->
+                      <span>
+                        <% unless @accessability_avg == 0 || @accessability_avg.nil? %>
+                          <% (5-@accessability_avg).times do %>
+                            <span>
+                              <i class="far fa-star"></i>
+                            </span>
+                          <% end %>
+                        <% end %>
+                      </span>
+                      <!-- star rating condition -->
+                    <p>Condition:</p>
+                      <span>
+                        <% unless @condition_avg == 0 || @condition_avg.nil?%>
+                          <% @condition_avg.times do %>
+                            <span>
+                              <i class="fas fa-star"></i>
+                            </span>
+                          <% end %>
+                        <% end %>
+                      </span>
+                      <!-- empty stars -->
+                      <span>
+                        <% unless @condition_avg == 0 || @condition_avg.nil? %>
+                          <% (5-@condition_avg).times do %>
+                            <span>
+                              <i class="far fa-star"></i>
+                            </span>
+                          <% end %>
+                        <% end %>
+                      </span>
+                  </div>
               </div>
-            <% end %>
-          <% end %>
-        </div>
-        <!-- Simple form for creating a new review -->
-      </div>
-  <% end %>
-
-        <%if @booking %>
-          <%= render 'reviews/reviewform' %>
+              <div>
+                <!-- star rating accessability -->
+              </div>
+            </div>
+            <div class="rating-content">
+              <!-- Display Reviews -->
+              <% @station.reviews.each do |review| %>
+                <% unless review.content.empty? %>
+                  <div class="review-content-box">
+                    <p style="color: grey;"> <em>"<%= review.content %>"</em></p>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+            <!-- Simple form for creating a new review -->
+          </div>
         <% end %>
 
-      <div class ="index-map" id="map" style="width: 100%;
-      height: 600px;" data-markers="<%= @marker.to_json %>"
-      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-      </div>
-      <div class="upcoming-bookings">
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item" style="font-size: 13px; color: grey;">upcoming bookings for this station</li>
-            <% @station.bookings.each do |booking| %>
-              <li class="list-group-item">
-                <strong style="color: darkslategrey;"><%= booking.start.strftime("%b %e, %l:%M %p") %></strong> - <strong style="color: darkslategrey;"><%=  booking.end.strftime("%b %e, %l:%M %p") %> </strong>
-              </li>
-            <% end %>
-          </ul>
-      </div>
+          <%if @booking %>
+            <p class="btn btn-light w-100 form-botton-display" style="margin-top: 20px; font-weight: bold;">write a review</p>
+            <div id="review-form-div">
+              <%= render 'reviews/reviewform' %>
+            </div>
+          <% end %>
     </div>
-
-    <!-- display upcoing bookings -->
-
-    <!-- Booking form -->
-    <div class="col-lg-4">
+    <div class="booking-wrapper"> <!-- include booking form & upcoming bookings -->
+      <!-- bookings form -->
       <div class="booking-form">
         <div class="booking-form-content">
             <div id="header-create-booking">
-              <h2 class="pb-3">Create a Booking!</h2>
+              <h2 class="pb-3">Create a Booking</h2>
             </div>
             <div id="price-create-booking">
               <p><b>$ <%= @station.price %> </b></p><p id="price-per-hour">per hour</p>
@@ -152,7 +123,28 @@
             <div class="booking-form-form">
               <%= render 'bookings/booking_form' %>
             </div>
+        </div>
+      </div>
+      <!-- upcoming bookings -->
+      <div class="upcoming-bookings" style="z-index:100">
+        <ul class="list-group list-group-flush">
+          <h4 style="font-family: Josefin sans, sans-serif; font-weight: bold; text-align: center; margin-top: 55px;" >Upcoming bookings</h4>
+            <% @station.bookings.each do |booking| %>
+              <li class="list-group-item">
+                <!-- if booking same date display only hour? -->
+                <strong style="color: #333333;"><%= booking.start.strftime("%b %e, %l:%M %p") %></strong> - <strong style="color: #333333;"><%=  booking.end.strftime("%b %e, %l:%M %p") %> </strong>
+              </li>
+            <% end %>
+          </ul>
       </div>
     </div>
-  </div>
-
+     <!-- map as banner on bottom of page -->
+    </div>
+    <!-- <div class="map-location-info"> -->
+      <h2 style="margin-top: 20px; margin-bottom: 5px;">The location</h2>
+      <p>This charging spot is located at <strong><%= @station.address %></strong>. The map displays it exact lcoation. </p>
+      <div class ="detail-map" style= "margin-bottom: 30px; "id="map" data-markers="<%= @marker.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+    <!-- </div> -->
+</div>
