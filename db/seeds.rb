@@ -54,7 +54,7 @@ place_types.each do |type|
 
   gm_return["results"].each do |location|
     puts "> Creating Station at #{location['vicinity']}"
-    s = Station.new(address: location["vicinity"], charger: chargers[rand(0..5)], user_id: User.all[rand(0..(User.all.count - 1))].id, price: (rand(1..9)/10), instruction: instruction_array[rand(0..4)])
+    s = Station.new(address: location["vicinity"], charger: chargers[rand(0..5)], user_id: User.all[rand(0..(User.all.count - 1))].id, price: (rand(1..9)/10.to_f), instruction: instruction_array[rand(0..4)])
 
     image_check_metadata = JSON.parse(open("https://maps.googleapis.com/maps/api/streetview/metadata?location=#{location['geometry']['location']['lat']},#{location['geometry']['location']['lng']}&key=#{ENV['GOOGLE_MAPS_KEY']}").read)
 
