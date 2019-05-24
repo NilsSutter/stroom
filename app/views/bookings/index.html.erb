@@ -73,6 +73,14 @@
         <strong>€<%= ((item.end - item.start)/60) * item.station.price %></strong>
           <%= link_to "Cancel Booking", booking_path(item), method: :delete, class:"ml-4" %>
       </p>
+      <!-- adding guard clause because code keeps breaking -->
+        <p class="read-more">
+          <a href="#">Read More</a>
+          <% if item.station.price != nil %>
+            <strong>€<%= ((item.end - item.start)/60) * item.station.price %></strong>
+          <% end %>
+            <%= link_to "Cancel Booking", booking_path(item), method: :delete, class:"display-right" %>
+        </p>
     </div>
   </div>
 <% end %>

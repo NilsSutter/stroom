@@ -11,5 +11,8 @@
     placeholder: "your car should be fully charged by then",
     input_html: {id: "range_end"},
     wrapper_html: { class: 'search-input-field' } %>
-  <%= f.button :submit, class: "btn btn-primary w-100" %>
+  <% unless @station.user_id == current_user.id %>
+      <%= f.button :submit, class: "btn btn-primary w-100" %>
+    <% end %>
 <% end %>
+
