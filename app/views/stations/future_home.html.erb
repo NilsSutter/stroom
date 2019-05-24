@@ -1,0 +1,49 @@
+<div class="landing-page">
+  <%= render '/partials/navbar-transparent'%>
+
+  <div class="d-flex">
+    <div class="search-form">
+      <div class="search-form-content">
+        <%= simple_form_for :search, url: stations_path, method: "GET", html: { class: 'form' } do |f| %>
+
+        <div class="search-top-line">
+          <h1>I'm looking for a
+          <%= f.input_field :charger,
+            collection: ["Tesla", "Mercedes", "BMW", "Volkswagen", "Volvo", "Ford"],
+            class: 'hf-cars home-page-input',
+            required: false,
+            label: false,
+            prompt: "" %>
+
+            charger, </h1>
+          </div>
+
+          <div class="search-second-line">
+            <h1>within
+            <%= f.input_field :radius,
+              as: :integer,
+              required: false,
+              class: 'search-form-km home-page-input',
+              label: false,
+              placeholder: "" %>
+              km of
+            <%= f.input_field :address,
+              input_html: {value: ""},
+              class: 'search-form-location-search home-page-input',
+              label: false,
+              placeholder: "",
+              required: false %>
+            </h1>
+          </div>
+
+          <h1>starting on
+          <%= f.input_field :start,
+            as: :string,
+            required: false,
+            class: "datepicker home-page-input",
+            label: false %>
+          <%= f.submit "Search", class: "btn home-page-submit-button" %></h1>
+        <% end %>
+      </div>
+    </div>
+</div>

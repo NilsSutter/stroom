@@ -1,0 +1,86 @@
+.search-form {
+  // background-color: white;
+  // border-radius: 2px;
+  // box-shadow: 0 3px 3px 2px rgba(0, 0, 0, 0.2);
+  // position: relative;
+  // left: 130px;
+  width: 80%;
+  margin: 10% auto;
+  z-index: 10;
+
+}
+
+.home-page-input {
+  background: rgba(255,255,255,0.0);
+  border: 1px solid black;
+  border-radius: 2px;
+  color: #f99441;
+  height: 45px;
+}
+
+.hf-cars {
+
+}
+
+.datepicker {
+  width: 306px;
+  text-align: center;
+  height: 45px;
+}
+
+.search-form-content {
+  background: rgba(255, 255, 255, 0.85);
+  width: 853px;
+  padding: 40px 55px !important;
+  border-radius: 2px;
+  border-bottom: 11px solid #f99441;
+}
+
+.search-top-line {
+  margin-bottom: 35px;
+}
+
+.search-second-line {
+  margin-bottom: 35px;
+}
+
+.home-page-submit-button {
+  width: 103px;
+  background: #f99441;
+  height: 45px;
+}
+
+.search-form-km {
+  text-align: right;
+  width: 111px !important;
+}
+
+.search-form-location-search {
+  display: block;
+}
+
+.algolia-places {
+    width: 360px;
+}
+.search-form-content {
+  padding: 25px;
+}
+
+.search-input-field {
+  color: gray;
+  font-size: 13px;
+}
+
+/* Time eases in ;) */
+.flatpickr-time {
+  transition: ease 0.2s;
+}
+
+/* Default height of 28px is not enough */
+.flatpickr-months .flatpickr-month {
+  height: 31px !important;
+}
+
+.front-page-text {
+  margin-top: 70px;
+}
