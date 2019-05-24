@@ -4,11 +4,11 @@
     required: false,
     wrapper_html: { class: 'search-input-field' },
     input_html: {id: "range_start"},
-    placeholder: "when will you arrive?" %>
+    placeholder: "Click to Set" %>
   <%= f.input :end,
     as: :string,
     required: false,
-    placeholder: "your car should be fully charged by then",
+    placeholder: "Click to Set",
     input_html: {id: "range_end"},
     wrapper_html: { class: 'search-input-field' } %>
   <% unless user_signed_in? && @station.user_id == current_user.id %>
