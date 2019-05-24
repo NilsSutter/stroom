@@ -7,8 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'open-uri'
 
-# puts "Deleting all Reviews, Bookings, Stations, and Users!"
-puts "Deleting ONLY Reviews"
+puts "Deleting all Reviews, Bookings, Stations, and Users!"
 Review.delete_all
 # Booking.delete_all
 # Station.delete_all
@@ -77,16 +76,16 @@ Review.delete_all
 #   end
 # end
 #
-#
-#
-#
-# # Create a review for each booking
-# content_array = [
-#   "Good tasting electricity! Would eat again.",
-#   "Owner seemed to forget I had booked the spot, but that didn't stop me...",
-#   "I had the time of my life! 10/10 would charge again!",
-#   "Turns out you can't charge a gasoline engine with a tesla charger in the tail pipe. My bad."
-# ]
+
+
+
+# Create a review for each booking
+content_array = [
+  "Good tasting electricity! Would eat again.",
+  "Owner seemed to forget I had booked the spot, but that didn't stop me...",
+  "I had the time of my life! 10/10 would charge again!",
+  "Turns out you can't charge a gasoline engine with a tesla charger in the tail pipe. My bad."
+]
 
 
 puts "Creating Reviews..."
@@ -95,6 +94,6 @@ Booking.all.each do |each|
   xxx.station = Station.all[rand(0..(Station.all.count - 1))]
   xxx.save!
 end
-
-puts "Deleting Problem Child"
-Station.where(address: "Bezirk Mitte").first.destroy
+#
+# puts "Deleting Problem Child"
+# Station.where(address: "Bezirk Mitte").first.destroy
