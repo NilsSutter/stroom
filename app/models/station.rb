@@ -2,8 +2,8 @@ class Station < ApplicationRecord
   CHARGER_TYPES = ["tesla", "mercedes", "bmw", "volkswagen", "volvo", "ford"]
 
   belongs_to :user
-  has_many :bookings
-  has_many :reviews
+  has_many :bookings, dependent: :destroy
+  has_many :reviews, dependent: :destroy
   validates :address, :charger, :user, presence: true
   validates_inclusion_of :charger, in: CHARGER_TYPES
 
@@ -20,6 +20,10 @@ class Station < ApplicationRecord
 
    # Methods for review computations
   def compute_overall_avg
+    if self.reviews.count == 0
+      return 0
+    end
+
     (compute_accessibility + compute_condition) / 2
   end
 
