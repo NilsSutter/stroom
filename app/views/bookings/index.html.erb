@@ -95,7 +95,8 @@
       <% end %>
      <p> <%= item.station.instruction%> </p>
       <p class="read-more">
-            <%= link_to "Cancel Booking", booking_path(item), method: :delete, class:"mt-4" %>
+        <%= link_to "Details", station_path(item.station), class:"mr-3" %>
+        <%= link_to "Cancel Booking", booking_path(item), method: :delete, class:"mt-4" %>
         </p>
     </div>
   </div>
