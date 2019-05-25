@@ -48,22 +48,16 @@ class StationsController < ApplicationController
   end
 
   def show
-    # TO DO: Refactor reviews into review controller
     @new_booking = Booking.new
     @review = Review.new
     @booking = @station.bookings.last
-    @station_reviews = @station.reviews
+    # @station_reviews = @station.reviews
     @reviews = Review.where(station: @station)
-    # compute averages PUT IN MODEL?
-    unless @station.reviews.empty?
-      @overall_avg = @station.compute_overall_avg.round
-      @accessability_avg = @station.compute_accessibility.round
-      @condition_avg = @station.compute_condition.round
-    else
-      @overall_avg = 0
-      @accessability_avg = 0
-      @condition_avg = 0
-    end
+    # get review ratings from station model
+    @overall_avg = @station.compute_overall_avg.round
+    @accessability_avg = @station.compute_accessability.round
+    @condition_avg = @station.compute_condition.round
+
     @marker =
       [{
         lat: @station.latitude,

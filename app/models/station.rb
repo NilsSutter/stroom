@@ -20,20 +20,15 @@ class Station < ApplicationRecord
 
    # Methods for review computations
   def compute_overall_avg
-    if self.reviews.count == 0
-      return 0
-    end
-
-    (compute_accessibility + compute_condition) / 2
+    self.reviews.count == 0 ? 0 : ((compute_accessability + compute_condition) / 2).round
   end
 
-  def compute_accessibility
-    accessibility = []
+  def compute_accessability
+    accessability = []
     self.reviews.each do |review|
-      accessibility << review.accessability
+      accessability << review.accessability
     end
-    accessibility_sum = accessibility.reduce(0) { |sum, num| sum + num }
-    accessibility_sum.to_f / accessibility.count
+    accessability.size.zero? ? 0 : accessability.inject(0) { |sum, num| sum + num } / accessability.size
   end
 
   def compute_condition
@@ -41,7 +36,6 @@ class Station < ApplicationRecord
     self.reviews.each do |review|
       condition << review.condition
     end
-    condition_sum = condition.reduce(0) { |sum, num| sum + num }
-    condition_sum.to_f / condition.count
+    condition.size.zero? ? 0 : condition.inject(0) { |sum, num| sum + num } / condition.size
   end
 end
